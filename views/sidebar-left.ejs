@@ -1,0 +1,36 @@
+<div class="sidebar-inner c-overflow">
+    <div class="profile-menu">
+        <a href="" toggle-submenu>
+            <div class="profile-pic">
+                <img ng-if="false" src="foto_url" class="img-circle dropdown-toggle margin10" data-toggle="dropdown" alt="USERNAME"
+                     width="40" height="40" />
+                <img ng-if="true" src="" alt="">
+            </div>
+
+            <div class="profile-info">
+                USERNAME
+
+                <i class="zmdi zmdi-caret-down"></i>
+            </div>
+        </a>
+
+        <ul class="main-menu" ng-controller="sidebarController">
+            <li>
+                <a data-ui-sref="user_profile" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i> Perfil</a>
+            </li>
+            <li>
+                <a href="" ng-click="logout()"><i class="zmdi zmdi-time-restore"></i> Salir</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="main-menu">
+        
+        <li data-ui-sref-active="active">
+            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-calendar"></i> Calendario</a>
+        </li>
+        <li data-ui-sref-active="active" ng-if="'USER_ROLE' == 'root' || 'USER_ROLE' == 'sadmin'" >
+            <a data-ui-sref="admins" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-shield-security"></i> Administradores</a>
+        </li>
+    </ul>
+</div>

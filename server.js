@@ -9,6 +9,9 @@ var express = require('express'),
   methodOverride = require('method-override'),
   errorHandler = require('errorhandler'),
   morgan = require('morgan'),
+
+  partials = require('./routes/partials'),
+
   http = require('http'),
   path = require('path');
 
@@ -63,6 +66,8 @@ var index = function(req, res) {
 
 app.get('/', index);
 app.get('/index', index);
+
+app.get('/partials/:view', partials.partials);
 
 /**
  * Start Server
