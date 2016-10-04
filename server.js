@@ -47,7 +47,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new BearerStrategy((token, done) => done(null, token)));
+passport.use(new BearerStrategy(function(token, done) {
+  request(config.user_url + '?accessToken=' + token, function (error, res, body) {
+    if (error) {
+      return done(error);
+    }
+    if (res.statusCode != 200) {
+      return done(null, false);
+    }
+    var user = JSON.parse(body);
+    user.accessToken = token;
+    return done(null, user);
+  });
+}));
 
 
 passport.serializeUser(function(user, done) {
