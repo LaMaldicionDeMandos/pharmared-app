@@ -80,8 +80,7 @@ var index = function(req, res) {
   res.render('index');
 };
 
-app.get('/', passport.authenticate('bearer', { session: false }), index);
-
+app.get('/', passport.authenticate('bearer', { session: true, failureRedirect: config.fail_authorisation_url }), index);
 app.get('/partials/:view', partials.partials);
 
 /**
@@ -103,5 +102,5 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  return res.redirect('/');
+  return res.redirect(config.fail_authorisation_url);
 };
