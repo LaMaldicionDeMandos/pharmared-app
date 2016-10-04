@@ -1,7 +1,25 @@
 {
-  "name": "Pgarmared_app",
+  "name": "Pharmared_app",
   "version": "0.0.1",
   "private": true,
+  "description": "Social net for pharmacy",
+  "main": "server.js",
+  "scripts": {
+    "start_production": "NODE_ENV=production node server.js",
+    "start_staging": "NODE_ENV=staging node server.js",
+    "start_development": "NODE_ENV=development node server.js"
+  },
+  "engines": {
+    "node": "0.12.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LaMaldicionDeMandos/pharmared-app.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
   "devDependencies": {
     "assert": "1.3.0",
     "grunt": "^1.0.1",
