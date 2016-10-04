@@ -5,15 +5,20 @@
 config = require('./services/config');
 
 var express = require('express'),
-  bodyParser = require('body-parser'),
-  methodOverride = require('method-override'),
-  errorHandler = require('errorhandler'),
-  morgan = require('morgan'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    errorHandler = require('errorhandler'),
+    morgan = require('morgan'),
+    session = require('express-session'),
 
   partials = require('./routes/partials'),
 
   http = require('http'),
   path = require('path');
+
+var cookieParser = require('cookie-parser');
+var BearerStrategy = require('passport-http-bearer').Strategy;
+var request = require('request');
 
 var passport = require('passport');
 var permission = require('permission');
@@ -31,8 +36,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride());
+app.use(cookieParser('farmared_app_secret'));
+app.use(session({
+  secret: 'farmared_app_secret',
+  name: 'cookie_pharmared_landing',
+  resave: true,
+  rolling: true,
+  saveUninitialized: true,
+  cookie: {maxAge: config.session_expire, secure: false}}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new BearerStrategy((token, done) => done(null, token)));
+
 
 passport.serializeUser(function(user, done) {
   console.log("Serializing user: " + JSON.stringify(user));
@@ -64,8 +80,7 @@ var index = function(req, res) {
   res.render('index');
 };
 
-app.get('/', index);
-app.get('/index', index);
+app.get('/', passport.authenticate('bearer', { session: false }), index);
 
 app.get('/partials/:view', partials.partials);
 
