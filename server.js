@@ -48,15 +48,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new BearerStrategy(function(token, done) {
+  console.log('Try to authenticate: bearer token: ' + token);
   request(config.user_url + '?accessToken=' + token, function (error, res, body) {
     if (error) {
+      console.log('Authentication with bearer fail with error: ' + error);
       return done(error);
     }
+    console.log('Status code: ' + res.statusCode);
     if (res.statusCode != 200) {
       return done(null, false);
     }
+    console.log('Response body: ' + body);
     var user = JSON.parse(body);
     user.accessToken = token;
+    console.log('All are ok, authenticated');
     return done(null, user);
   });
 }));
