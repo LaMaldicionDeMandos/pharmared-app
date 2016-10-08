@@ -97,7 +97,12 @@ var index = function(req, res) {
   res.render('index');
 };
 
-app.get('/', passport.authenticate('bearer', { session: true, failureRedirect: config.fail_authorisation_url }), index);
+app.get('/', function(req, res, next) {
+  console.log('headers: ' + req.headers);
+  console.log('header Authorization: ' + req.header('Authorization'));
+  next();
+},
+    passport.authenticate('bearer', { session: true, failureRedirect: config.fail_authorisation_url }), index);
 app.get('/partials/:view', partials.partials);
 
 /**
