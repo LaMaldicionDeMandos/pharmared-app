@@ -17,7 +17,7 @@ var express = require('express'),
   path = require('path');
 
 var cookieParser = require('cookie-parser');
-var BearerStrategy = require('passport-http-bearer').Strategy;
+var HashStrategy = require('passport-hash').Strategy;
 var request = require('request');
 
 var passport = require('passport');
@@ -47,7 +47,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new BearerStrategy(function(token, done) {
+passport.use(new HashStrategy(function(token, done) {
   console.log('Try to authenticate: bearer token: ' + token);
   request(config.user_url + '?accessToken=' + token, function (error, res, body) {
     if (error) {
@@ -97,12 +97,9 @@ var index = function(req, res) {
   res.render('index');
 };
 
-app.get('/', function(req, res, next) {
-  console.log('headers: ' + req.headers);
-  console.log('header Authorization: ' + req.header('Authorization'));
-  next();
-},
-    passport.authenticate('bearer', { session: true, failureRedirect: config.fail_authorisation_url }), index);
+app.get('/authorization/:token',
+    passport.authenticate('hash', { failureRedirect: config.fail_authorisation_url, session: true }),
+    index);
 app.get('/partials/:view', partials.partials);
 
 /**
