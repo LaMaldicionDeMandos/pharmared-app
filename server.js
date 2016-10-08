@@ -97,6 +97,8 @@ var index = function(req, res) {
   res.render('index');
 };
 
+app.get('/', ensureAuthenticated, index);
+
 app.get('/authorization/:token',
     passport.authenticate('hash', { failureRedirect: config.fail_authorisation_url, session: true }),
     index);
