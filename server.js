@@ -99,7 +99,7 @@ var index = function(req, res) {
 
 app.get('/', ensureAuthenticated, index);
 
-app.get('/authorization/:token',
+app.get('/authorization/:hash',
     passport.authenticate('hash', { failureRedirect: config.fail_authorisation_url, session: true }),
     index);
 app.get('/partials/:view', partials.partials);
