@@ -101,7 +101,9 @@ app.get('/', ensureAuthenticated, index);
 
 app.get('/authorization/:hash',
     passport.authenticate('hash', { failureRedirect: config.fail_authorisation_url, session: true }),
-    index);
+    function(req, res) {
+      res.redirect('/');
+    });
 app.get('/partials/:view', partials.partials);
 
 /**
