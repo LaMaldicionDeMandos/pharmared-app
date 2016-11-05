@@ -8762,6 +8762,8 @@ button.close {
  * Material Colors
  */
 
+/*@m-pharmacy:               #66a554;*/
+
 /* Bootstrap Branding */
 
 /*
@@ -10184,7 +10186,8 @@ h6 small,
 
 .header-inner {
   list-style: none;
-  padding: 17px 0;
+  padding: 10px 0;
+  margin-top: 3px;
   margin-bottom: 0;
   position: relative;
 }
@@ -10446,7 +10449,7 @@ h6 small,
 }
 
 #header .logo a {
-  padding: 7px 10px;
+  padding: 0px 10px;
 }
 
 #top-search-wrap {

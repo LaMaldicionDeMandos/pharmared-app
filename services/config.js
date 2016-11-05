@@ -8,5 +8,6 @@ console.log('Scope: ' + process.env.NODE_ENV);
 
 config = xnconfig.parse(process.env.NODE_ENV, data);
 console.log('env: ' + config.env);
+console.log('Listening in port: ' + process.env.PORT);
 
 module.exports = config;

@@ -7170,6 +7170,7 @@ button.close {
 /*
  * Material Colors
  */
+/*@m-pharmacy:               #66a554;*/
 /* Bootstrap Branding */
 /*
  * Colors
@@ -8283,7 +8284,8 @@ h6 small,
  */
 .header-inner {
   list-style: none;
-  padding: 17px 0;
+  padding: 10px 0;
+  margin-top: 3px;
   margin-bottom: 0;
   position: relative;
 }
@@ -8509,7 +8511,7 @@ h6 small,
   transform: translate3d(0, -70px, 0);
 }
 #header .logo a {
-  padding: 7px 10px;
+  padding: 0px 10px;
 }
 #top-search-wrap {
   position: absolute;
@@ -14632,14 +14634,14 @@ body.login-content:before {
   }
 }
 [data-current-skin="pharmacy"] {
-  background-color: #66a554;
+  background-color: #429e45;
 }
 [data-current-skin="pharmacy"] .ss-icon {
-  color: #66a554;
+  color: #429e45;
 }
 @media (max-width: 767px) {
   [data-current-skin="pharmacy"] .ha-menu {
-    background: #66a554;
+    background: #429e45;
   }
 }
 .preloader {

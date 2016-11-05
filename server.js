@@ -27,6 +27,7 @@ var app = module.exports = express();
 /**
  * Configuration
  */
+
 app.enable('trust proxy');
 app.set('port', process.env.PORT || 5000 /*config.port*/);
 app.set('views', __dirname + '/views');
@@ -82,6 +83,7 @@ var env = process.env.NODE_ENV || 'development';
 var handleError = function(err, req, res, next) {
   next();
 };
+
 // development only
 if (env === 'development') {
   app.use(handleError);
@@ -90,7 +92,7 @@ if (env === 'development') {
   app.use(handleError);
 }
 
-/**
+/**za d
  * Routes
  */
 var index = function(req, res) {
@@ -122,7 +124,7 @@ server.on('error', function(error) {
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated() || env === 'development') {
     return next();
   }
   return res.redirect(config.fail_authorisation_url);

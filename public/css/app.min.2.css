@@ -2450,16 +2450,16 @@ body.login-content:before {
 }
 
 [data-current-skin="pharmacy"] {
-  background-color: #66a554;
+  background-color: #429e45;
 }
 
 [data-current-skin="pharmacy"] .ss-icon {
-  color: #66a554;
+  color: #429e45;
 }
 
 @media (max-width: 767px) {
   [data-current-skin="pharmacy"] .ha-menu {
-    background: #66a554;
+    background: #429e45;
   }
 }
 
