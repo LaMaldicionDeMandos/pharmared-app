@@ -43,15 +43,25 @@ app.config(function ($stateProvider, $urlRouterProvider){
                 url: '/admins',
                 templateUrl: '/partials/admin_user'
             })*/
+
+
+
+
+
             .state ('user_profile', {
                 url: '/user_profile',
                 templateUrl: '/partials/user_profile'
             })
-           /* .state ('profile', {
-                url: '/profile/{id}',
-                templateUrl: function($stateParams) {
-                    return '/partials/profile/' + $stateParams.id;
-                }
+            .state ('user_profile.user_profile_about', {
+                url: '/user_profile_about',
+                templateUrl: 'partials/user_profile_about'
             })
-        */
+
+    /* .state ('profile', {
+         url: '/profile/{id}',
+         templateUrl: function($stateParams) {
+             return '/partials/profile/' + $stateParams.id;
+         }
+     })
+ */
     });
