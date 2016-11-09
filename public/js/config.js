@@ -42,12 +42,12 @@ app.config(function ($stateProvider, $urlRouterProvider){
             .state ('admins', {
                 url: '/admins',
                 templateUrl: '/partials/admin_user'
-            })
+            })*/
             .state ('user_profile', {
                 url: '/user_profile',
                 templateUrl: '/partials/user_profile'
             })
-            .state ('profile', {
+           /* .state ('profile', {
                 url: '/profile/{id}',
                 templateUrl: function($stateParams) {
                     return '/partials/profile/' + $stateParams.id;

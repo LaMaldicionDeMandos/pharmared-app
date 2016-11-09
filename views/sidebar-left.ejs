@@ -27,10 +27,15 @@
     <ul class="main-menu">
         
         <li data-ui-sref-active="active">
-            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-calendar"></i> Calendario</a>
+            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home"></i>Muro</a>
         </li>
-        <li data-ui-sref-active="active" ng-if="'USER_ROLE' == 'root' || 'USER_ROLE' == 'sadmin'" >
+        <!--<li data-ui-sref-active="active" ng-if="'USER_ROLE' == 'root' || 'USER_ROLE' == 'sadmin'" >
             <a data-ui-sref="admins" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-shield-security"></i> Administradores</a>
-        </li>
+        </li>-->
+
+        <!--<li data-ui-sref-active="active">
+            <a data-ui-sref="user_profile" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-calendar"></i>Mi Perfil</a>
+        </li>-->
+
     </ul>
 </div>

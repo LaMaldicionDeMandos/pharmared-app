@@ -4,9 +4,10 @@
 'use strict';
 
 /* Controllers */
-angular.module('app.controllers', []).
+angular.module('app.controllers', [])
+    .
     controller('sidebarController', function($scope, $window) {
-        if ($window.location.hash == '#_=_') {
+        if ($window.location.hash == '#') {
             $window.location.href = '/';
         }
     }).
