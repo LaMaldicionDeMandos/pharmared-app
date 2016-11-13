@@ -1,11 +1,18 @@
 <div class="sidebar-inner c-overflow">
-    <div class="profile-menu">
+    <div class="profile-menu" ng-controller="sidebarProfileController">
         <a href="" toggle-submenu>
-            <div class="profile-pic">
-                <img ng-if="false" src="foto_url" class="img-circle dropdown-toggle margin10" data-toggle="dropdown" alt="USERNAME"
+            <div class="profile-pic" >
+
+                <img ng-if="profile.picture" src={{profile.picture}} class="img-circle dropdown-toggle margin10" data-toggle="dropdown" alt="USERNAME"
                      width="40" height="40" />
-                <img ng-if="true" src="" alt="">
+
+               <!-- <img ng-if="photo==false" src="" alt="">-->
+
+                <ng-avatar ng-if="profile.picture==false" initials={{letters}} bg-color="red" text-color="white" round-shape="true"  width="40" height="40"></ng-avatar>
+
+
             </div>
+
 
             <div class="profile-info">
                 USERNAME

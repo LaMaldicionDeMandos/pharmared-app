@@ -5,4 +5,9 @@ angular.module('app.services', []).
     factory('userService', function($http, $q) {
 
 
-    });
+    })
+
+.factory('profileService',function($http, $q){
+
+
+});

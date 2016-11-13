@@ -12,6 +12,7 @@ var app = angular.module('app', [
     'nouislider',
     'ngTable',
     'app.controllers',
-    'app.services'
+    'app.services',
+    'ngAvatar'
 
 ]);
