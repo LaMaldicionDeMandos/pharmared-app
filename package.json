@@ -59,6 +59,7 @@
     "passport-hash": "^0.6.0",
     "permission": "^0.1.6",
     "q": "^1.4.1",
+    "randomcolor": "^0.4.4",
     "request": "^2.57.0"
   }
 }
