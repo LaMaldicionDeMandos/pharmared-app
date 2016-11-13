@@ -8,6 +8,21 @@ angular.module('app.services', []).
     })
 
 .factory('profileService',function($http, $q){
+    return {
+        getProfile: function () {
+            var def = $q.defer();
+            $http({
+                url: '/profile/me',
+                method: 'get',
+                dataType: 'json',
+                }).success(function (data) {
+                def.resolve(data);
+            }).error(function (data, status) {
+                def.reject(data);
+            });
+            return def.promise;
+        }
 
+    } ;
 
 });

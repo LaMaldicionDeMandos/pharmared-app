@@ -12,7 +12,7 @@ var express = require('express'),
     session = require('express-session'),
 
   partials = require('./routes/partials'),
-
+  profile = require('./routes/profile'),
   http = require('http'),
   path = require('path');
 
@@ -107,7 +107,7 @@ app.get('/authorization/:hash',
       res.redirect('/');
     });
 app.get('/partials/:view', partials.partials);
-
+app.use('/profile/',profile);
 /**
  * Start Server
  */

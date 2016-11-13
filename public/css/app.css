@@ -1136,6 +1136,10 @@ img {
 }
 .img-circle {
   border-radius: 50%;
+  object-fit: cover;
+  /* Do not scale the image */
+  object-position: center;
+  /* Center the image within the element */
 }
 hr {
   margin-top: 18px;
@@ -8310,24 +8314,18 @@ h6 small,
   background-color: #fff;
 }
 #menu-trigger:before {
-  content: "";
-  position: absolute;
-  top: 13px;
-  left: 7px;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-  -webkit-transition: all;
-  -o-transition: all;
-  transition: all;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  -o-transform: scale(0);
-  transform: scale(0);
-  z-index: 0;
+  /* content: "";
+        position: absolute;
+        top: 13px;
+        left: 7px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.22);
+        .transition(all);
+        .transition-duration(300ms);
+        .scale(0);
+        z-index: 0;*/
 }
 #menu-trigger.open:before {
   -webkit-transform: scale(1);
