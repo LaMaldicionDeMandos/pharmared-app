@@ -124,7 +124,7 @@ server.on('error', function(error) {
 });
 
 function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated() || env === 'development') {
+  if (req.isAuthenticated()) {
     return next();
   }
   return res.redirect(config.fail_authorisation_url);
