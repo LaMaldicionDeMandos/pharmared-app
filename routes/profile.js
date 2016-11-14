@@ -27,4 +27,27 @@ var getProfile=function(req,res){
 };
 router.get('/me', getProfile);
 
+
+
+var putProfile=function(req,res){
+    request({
+        method: 'put',
+        body:req.body,
+        url: config.profile_url+'?accessToken='+req.user.accessToken,
+        json:true
+    }, function (error, response,body) {
+        if (error)  {
+            res.status(400).send(error);
+        }
+       else {
+            res.status(200).send(body);
+        }
+
+    });
+
+};
+router.put('/me', putProfile);
+
+
+
 module.exports = router;

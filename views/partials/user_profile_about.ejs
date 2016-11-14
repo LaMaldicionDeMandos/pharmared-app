@@ -22,12 +22,12 @@
             {{profile.profileSummary }}
         </div>
 
-        <form data-ng-submit="ProfileController.submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="ProfileController.editSummary === 1">
+        <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="ProfileController.editSummary === 1">
             <div class="fg-line">
                 <textarea data-ng-model="profile.profileSummary" class="form-control" rows="5" placeholder="Summary..."></textarea>
             </div>
             <div class="m-t-10">
-                <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
                 <button class="btn btn-link btn-sm" data-ng-click="cancEditSum" >Cancelar</button>
             </div>
         </form>
@@ -131,7 +131,7 @@
             </dl>
 
             <div class="m-t-30">
-                <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
                 <button class="btn btn-link btn-sm" data-ng-click="cancEditInfo()" >Cancelar</button>
             </div>
         </form>
@@ -212,7 +212,7 @@
             </dl>
 
             <div class="m-t-30">
-                <button class="btn btn-primary btn-sm" type="submit">Guardar</button>
+                <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
                 <button class="btn btn-link btn-sm" data-ng-click="cancEditCont()" >Cancelar</button>
             </div>
         </form>

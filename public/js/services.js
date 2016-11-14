@@ -6,6 +6,33 @@ angular.module('app.services', []).
 
 
     })
+    .factory('updateProfileService',function($http,$q){
+        return{
+            updateProfile:function(profile){
+
+                var def = $q.defer();
+                $http({
+                    url: '/profile/me',
+                    method: 'put',
+                    dataType: 'json',
+                    data:profile
+                }).success(function (data) {
+                    console.log('servicio update profile ok');
+                    def.resolve(data);
+
+                }).error(function (data, status) {
+                    console.log('servicio update profile error');
+                    def.reject(data);
+
+                });
+                return def.promise;
+
+            }
+
+            };
+
+        }
+    )
 
 .factory('profileService',function($http, $q){
     return {

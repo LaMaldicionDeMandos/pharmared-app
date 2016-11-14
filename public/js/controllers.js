@@ -15,7 +15,7 @@ angular.module('app.controllers', [])
 
     })
 
-.controller('ProfileController',function($scope,profileService){
+.controller('ProfileController',function($scope,profileService,updateProfileService){
     $scope.editSummary = 0;
     $scope.editInfo = 0;
     $scope.editContact = 0;
@@ -40,6 +40,7 @@ angular.module('app.controllers', [])
 
     $scope.editInf=function(){
       $scope.editInfo=1;
+
     };
 
     $scope.cancEditInfo=function(){
@@ -47,6 +48,7 @@ angular.module('app.controllers', [])
     };
     $scope.editSum=function(){
         $scope.editSummary=1;
+
     };
     $scope.cancEditSum=function(){
         $scope.editSummary=0;
@@ -57,7 +59,19 @@ angular.module('app.controllers', [])
     $scope.cancEditCont=function(){
         $scope.editContact=0;
     };
+    $scope.guardar=function(){
+        updateProfileService.updateProfile($scope.profile).then(
+            function(){
+            console.log('update profile ok');
+            },
+            function(error) {
+                $scope.errors.updateProfile= true;
+                console.log('update profile error');
+            }
 
+        );
+
+    };
     //Edit
 
 
