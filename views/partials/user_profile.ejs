@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" ng-controller="ProfileController">
 
     <div class="block-header">
-        <h2>Malinda Hollaway <small>Web/UI Developer, Dubai, United Arab Emirates</small></h2>
+        <h2>{{profile.first_name}} {{profile.last_name}} <small>{{profile.phrase}}</small></h2>
 
         <ul class="actions m-t-20 hidden-xs">
             <li class="dropdown" uib-dropdown>
@@ -24,7 +24,8 @@
         </ul>
     </div>
 
-    <div class="card" id="profile-main" data-ng-controller="profileCtrl as pctrl">
+    <div class="card" id="profile-main">
+       <!--data-ng-controller="profileCtrl as pctrl"-->
         <div class="pm-overview c-overflow">
             <div class="pmo-pic">
                 <div class="p-relative">
@@ -32,14 +33,16 @@
 
 
 
-                        <img class="img-responsive" src="img/profile-pics/profile-pic-2.jpg" alt="">
+                        <img ng-if="profile.picture" class="img-responsive" src={{profile.picture}} alt="">
 
-                       <ng-avatar initials="AB" bg-color="red" text-color="white" round-shape="true" ></ng-avatar>
+                        <ng-avatar ng-if="!profile.picture && prof" initials={{letters}} picture-format="png" colors-palette="color_palette" auto-color="true" width="259px"></ng-avatar>
+
+
 
 
                     </a>
 
-                    <div class="dropdown pmop-message" uib-dropdown>
+                   <!-- <div class="dropdown pmop-message" uib-dropdown>
                         <button uib-dropdown-toggle class="btn bgm-white btn-float">
                             <i class="zmdi zmdi-comment-text-alt"></i>
                         </button>
@@ -49,17 +52,17 @@
 
                             <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
                         </div>
-                    </div>
+                    </div>-->
 
                     <a href="" class="pmop-edit">
-                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
+                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Cambiar Foto</span>
                     </a>
                 </div>
 
 
                 <div class="pmo-stat">
-                    <h2 class="m-0 c-white">1562</h2>
-                    Total Connections
+                    <h2 ng-if="profile.roles[0]=='root'" class="m-0 c-white">Usuario Principal</h2>
+
                 </div>
             </div>
 
@@ -67,22 +70,27 @@
                 <h2>Contact</h2>
 
                 <ul>
-                    <li><i class="zmdi zmdi-phone"></i> {{ pctrl.mobileNumber }}</li>
-                    <li><i class="zmdi zmdi-email"></i> {{ pctrl.emailAddress }}</li>
-                    <li><i class="zmdi zmdi-facebook-box"></i> {{ pctrl.skype }}</li>
-                    <li><i class="zmdi zmdi-twitter"></i> {{ pctrl.twitter }} (twitter.com/malinda)</li>
-                    <li>
+                    <li ng-if="profile.mobileNumber"><i class="zmdi zmdi-phone"></i> {{ profile.mobileNumber }}</li>
+
+                    <li ng-if="profile.email"><i class="zmdi zmdi-email"></i>
+                    <a href="mailto://{{profile.email}}">
+                        {{profile.email}}
+                    </a></li>
+
+
+                    <li ng-if="profile.skype"><i class="zmdi zmdi-facebook-box"></i> {{ profile.skype }}</li>
+                    <li ng-if="profile.twitter"><i class="zmdi zmdi-twitter"></i> {{ profile.twitter }} </li>
+                    <li ng-if="profile.addressCity || profile.addressProvince">
                         <i class="zmdi zmdi-pin"></i>
                         <address class="m-b-0">
-                            {{ pctrl.addressSuite }}, <br/>
-                            {{ pctrl.addressCity }}, <br/>
-                            {{ pctrl.addressCountry }}
+                            {{ profile.addressCity }}, <br/>
+                            {{ profile.addressProvince }}
                         </address>
                     </li>
                 </ul>
             </div>
 
-            <div class="pmo-block pmo-items hidden-xs">
+           <!-- <div class="pmo-block pmo-items hidden-xs">
                 <h2>Connections</h2>
 
                 <div class="pmob-body">
@@ -125,10 +133,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
 
-        <div class="pm-body clearfix">
+        <div class="pm-body clearfix" >
             <ul class="tab-nav tn-justified" data-ng-include="'partials/profile-menu'"></ul>
 
             <data ui-view></data>
