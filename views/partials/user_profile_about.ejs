@@ -22,7 +22,7 @@
             {{profile.profileSummary }}
         </div>
 
-        <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="ProfileController.editSummary === 1">
+        <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
             <div class="fg-line">
                 <textarea data-ng-model="profile.profileSummary" class="form-control" rows="5" placeholder="Summary..."></textarea>
             </div>
