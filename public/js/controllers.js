@@ -25,15 +25,10 @@ angular.module('app.controllers', [])
     profileService.getProfile().then(
     function(data) {
         $scope.profile=data;
-        $scope.form.summary=$scope.profile.summary;
-        $scope.form.first_name=$scope.profile.first_name;
-        $scope.form.last_name=$scope.profile.last_name;
-        $scope.form.phone=$scope.profile.phone;
-        $scope.form.email=$scope.profile.email;
-        $scope.form.twitter=$scope.profile.twitter;
-        $scope.form.skype=$scope.profile.skype;
 
-        //agregar los campos que faltan!!!
+        asignProfileToForm();
+
+
         $scope.letters=($scope.profile.first_name.substr(0,1)+$scope.profile.last_name.substr(0,1)).toUpperCase();
         $scope.prof=true;
 
@@ -56,7 +51,8 @@ angular.module('app.controllers', [])
     $scope.cancEditInfo=function(){
         $scope.editInfo=0;
 
-
+        asignProfileToForm();
+        $scope.errors={};
     };
     $scope.editSum=function(){
         $scope.editSummary=1;
@@ -64,12 +60,16 @@ angular.module('app.controllers', [])
     };
     $scope.cancEditSum=function(){
         $scope.editSummary=0;
+        asignProfileToForm();
+        $scope.errors={};
     };
     $scope.editCont=function(){
         $scope.editContact=1;
     };
     $scope.cancEditCont=function(){
         $scope.editContact=0;
+        asignProfileToForm();
+        $scope.errors={};
     };
     $scope.guardar=function(){
 
@@ -112,7 +112,7 @@ angular.module('app.controllers', [])
     $scope.validateChangeFirstName = function(first_name) {
         $scope.valid = true;
         if (!first_name || first_name.length == 0) {
-            $scope.errors.first_name = 'invalid_firstName';
+            $scope.errors.first_name = true;
            $scope.valid = false;
         }
 
@@ -122,7 +122,7 @@ angular.module('app.controllers', [])
     $scope.validateChangeLastName = function(last_name) {
         $scope.valid = true;
         if (!last_name || last_name.length == 0 ) {
-            $scope.errors.last_name = 'invalid_lastName';
+            $scope.errors.last_name = true;
             $scope.valid = false;
         }
         return {err:$scope.errors,valid:$scope.valid};
@@ -132,17 +132,28 @@ angular.module('app.controllers', [])
     $scope.validateChangeEmail = function(email) {
 
         $scope.valid = true;
-       if (email){
+
+        if (email.length>0){
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!re.test(email)) {
             $scope.errors.email = true;
             $scope.valid = false;
-        }
-       }
-        return {err:$scope.errors,valid:$scope.valid};
-    }
 
+       }}
+        return {err:$scope.errors,valid:$scope.valid};
+    };
+
+var asignProfileToForm=function() {
+    $scope.form.summary = $scope.profile.summary;
+    $scope.form.first_name = $scope.profile.first_name;
+    $scope.form.last_name = $scope.profile.last_name;
+    $scope.form.phone = $scope.profile.phone;
+    $scope.form.email = $scope.profile.email;
+    $scope.form.twitter = $scope.profile.twitter;
+    $scope.form.skype = $scope.profile.skype;
+}
+    //agregar los campos que faltan!!!
 });
 
 

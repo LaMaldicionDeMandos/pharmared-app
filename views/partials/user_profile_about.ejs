@@ -200,7 +200,7 @@
                 <dd>
                     <div class="form-group {{errors.email ? 'has-error' : ''}}">
                     <div class="fg-line">
-                        <input data-ng-model="form.email" type="email" class="form-control" placeholder="ej. malinda.h@gmail.com" ng-blur=validateChangeEmail(form.email)>
+                        <input data-ng-model="form.email" class="form-control" placeholder="ej. malinda.h@gmail.com" ng-blur=validateChangeEmail(form.email)>
                     </div>
                         <small ng-if="errors.email" class="help-block">Se debe completar correctamente el email</small>
                     </div>
