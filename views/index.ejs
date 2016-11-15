@@ -35,6 +35,21 @@
     <% include ./footer %>
 </footer>
 
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAwGOb5jrBSb-xq05A3w_2Htc7NDX31R-w",
+        authDomain: "pharmared-660ce.firebaseapp.com",
+        databaseURL: "https://pharmared-660ce.firebaseio.com",
+        storageBucket: "pharmared-660ce.appspot.com",
+        messagingSenderId: "958821522217"
+    };
+    firebase.initializeApp(config);
+</script>
+
+
 <!-- Core -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -95,5 +110,6 @@
 <script src="js/modules/media.js"></script>
 <script src="js/modules/components.js"></script>
 <script src="js/modules/calendar.js"></script>
+
 </body>
 </html>
