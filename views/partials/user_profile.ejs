@@ -71,10 +71,10 @@
             </div>
 
             <div class="pmo-block pmo-contact hidden-xs">
-                <h2>Contact</h2>
+                <h2>Contacto</h2>
 
                 <ul>
-                    <li ng-if="profile.mobileNumber"><i class="zmdi zmdi-phone"></i> {{ profile.mobileNumber }}</li>
+                    <li ng-if="profile.phone"><i class="zmdi zmdi-phone"></i> {{ profile.phone }}</li>
 
                     <li ng-if="profile.email"><i class="zmdi zmdi-email"></i>
                     <a href="mailto://{{profile.email}}">
@@ -84,11 +84,11 @@
 
                     <li ng-if="profile.skype"><i class="zmdi zmdi-facebook-box"></i> {{ profile.skype }}</li>
                     <li ng-if="profile.twitter"><i class="zmdi zmdi-twitter"></i> {{ profile.twitter }} </li>
-                    <li ng-if="profile.addressCity || profile.addressProvince">
+                    <li ng-if="profile.address_city || profile.address_province">
                         <i class="zmdi zmdi-pin"></i>
                         <address class="m-b-0">
-                            {{ profile.addressCity }}, <br/>
-                            {{ profile.addressProvince }}
+                            {{ profile.address_city }}, <br/>
+                            {{ profile.address_province }}
                         </address>
                     </li>
                 </ul>

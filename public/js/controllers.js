@@ -60,16 +60,23 @@ angular.module('app.controllers', [])
         $scope.editContact=0;
     };
     $scope.guardar=function(){
-        updateProfileService.updateProfile($scope.profile).then(
-            function(){
-            console.log('update profile ok');
-            },
-            function(error) {
-                $scope.errors.updateProfile= true;
-                console.log('update profile error');
-            }
 
-        );
+        var result =  validateChangeProfile($scope.profile);
+        if (result.valid) {
+
+            updateProfileService.updateProfile($scope.profile).then(
+                function () {
+                    console.log('update profile ok');
+                },
+                function (error) {
+                    $scope.errors.updateProfile = true;
+                    console.log('update profile error');
+                }
+            );
+        } else {
+            $scope.errors = result.err;
+        }
+
 
     };
     //Edit
@@ -91,6 +98,28 @@ angular.module('app.controllers', [])
     }
 
 
+    var validateChangeProfile = function(profile) {
+        var valid = true;
+
+
+        if (!profile.last_name || profile.last_name.length == 0 ) {
+            $scope.errors.last_name = 'invalid_lastName';
+            valid = false;
+        }
+
+        if (!profile.first_name || profile.first_name.length == 0) {
+            $scope.errors.first_name = 'invalid_firstName';
+            valid = false;
+        }
+
+       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!re.test(profile.email)) {
+            $scope.errors.email = 'invalid_email';
+            valid = false;
+        };
+        return {err:$scope.errors,valid:valid};
+    }
 
 });
 

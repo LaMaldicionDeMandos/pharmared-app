@@ -19,12 +19,12 @@
     </div>
     <div class="pmbb-body p-l-30">
         <div class="pmbb-view" data-ng-if="editSummary === 0">
-            {{profile.profileSummary }}
+            {{profile.summary }}
         </div>
 
         <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
             <div class="fg-line">
-                <textarea data-ng-model="profile.profileSummary" class="form-control" rows="5" placeholder="Summary..."></textarea>
+                <textarea data-ng-model="profile.summary" class="form-control" rows="5" placeholder="Resumen..."></textarea>
             </div>
             <div class="m-t-10">
                 <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
@@ -68,11 +68,11 @@
             </dl>
             <dl class="dl-horizontal">
                 <dt>Fecha de Nacimiento</dt>
-                <dd>{{ profile.birthDay }}</dd>
+                <dd>{{ profile.birthday }}</dd>
             </dl>
             <dl class="dl-horizontal">
                 <dt>Estado Civil</dt>
-                <dd>{{ profile.martialStatus }}</dd>
+                <dd>{{ profile.martial_status }}</dd>
             </dl>
         </div>
 
@@ -80,8 +80,12 @@
             <dl class="dl-horizontal">
                 <dt class="p-t-10">Nombre</dt>
                 <dd>
-                    <div class="fg-line">
-                        <input data-ng-model="profile.first_name" type="text" class="form-control" value="{{ profile.first_name }}" placeholder="ej. Aida">
+                    <div class="form-group {{errors.first_name ? 'has-error' : ''}}">
+                        <div class="fg-line">
+                            <input data-ng-model="profile.first_name" type="text" class="form-control"
+                                   value="{{ profile.first_name }}" placeholder="ej. Aida" ng-blur="errors.first_name = true">
+                        </div>
+                        <small ng-if="errors.first_name" class="help-block">El nombre es obligarotio</small>
                     </div>
 
                 </dd>
@@ -91,6 +95,8 @@
                 <dd>
                     <div class="fg-line">
                         <input data-ng-model="profile.last_name" type="text" class="form-control" value="{{ profile.last_name }}" placeholder="ej. Pasut">
+
+
                     </div>
 
                 </dd>
@@ -161,7 +167,7 @@
         <div class="pmbb-view" data-ng-if="editContact === 0">
             <dl class="dl-horizontal">
                 <dt>Tel&eacute;fono</dt>
-                <dd>{{ profile.mobileNumber }}</dd>
+                <dd>{{ profile.phone }}</dd>
             </dl>
             <dl class="dl-horizontal">
                 <dt>Correo Electr&oacute;nico</dt>
@@ -182,7 +188,7 @@
                 <dt class="p-t-10">Tel&eacute;fono</dt>
                 <dd>
                     <div class="fg-line">
-                        <input data-ng-model="profile.mobileNumber" type="text" class="form-control" placeholder="ej. +54 911 555-5555">
+                        <input data-ng-model="profile.phone" type="text" class="form-control" placeholder="ej. +54 911 555-5555">
                     </div>
                 </dd>
             </dl>
@@ -191,6 +197,7 @@
                 <dd>
                     <div class="fg-line">
                         <input data-ng-model="profile.email" type="email" class="form-control" placeholder="ej. malinda.h@gmail.com">
+
                     </div>
                 </dd>
             </dl>
