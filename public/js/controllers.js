@@ -16,6 +16,7 @@ angular.module('app.controllers', [])
     })
 
 .controller('ProfileController',function($scope,profileService,updateProfileService){
+    $scope.valid=true;
     $scope.editSummary = 0;
     $scope.editInfo = 0;
     $scope.editContact = 0;
@@ -24,6 +25,7 @@ angular.module('app.controllers', [])
     profileService.getProfile().then(
     function(data) {
         $scope.profile=data;
+        $scope.form=$scope.profile;
         $scope.letters=($scope.profile.first_name.substr(0,1)+$scope.profile.last_name.substr(0,1)).toUpperCase();
         $scope.prof=true;
 
@@ -61,9 +63,9 @@ angular.module('app.controllers', [])
     };
     $scope.guardar=function(){
 
-        var result =  validateChangeProfile($scope.profile);
-        if (result.valid) {
 
+        if ($scope.valid) {
+            $scope.profile=$scope.form;
             updateProfileService.updateProfile($scope.profile).then(
                 function () {
                     console.log('update profile ok');
@@ -73,16 +75,14 @@ angular.module('app.controllers', [])
                     console.log('update profile error');
                 }
             );
-        } else {
-            $scope.errors = result.err;
         }
-
 
     };
     //Edit
 
 
     $scope.submit = function(item, message) {
+       if($valid){
         if (item === 'profileSummary') {
             $scope.editSummary = 0;
         }
@@ -95,30 +95,38 @@ angular.module('app.controllers', [])
             $scope.editContact = 0;
         }
 
-    }
+    }};
 
 
-    var validateChangeProfile = function(profile) {
-        var valid = true;
-
-
-        if (!profile.last_name || profile.last_name.length == 0 ) {
-            $scope.errors.last_name = 'invalid_lastName';
-            valid = false;
-        }
-
-        if (!profile.first_name || profile.first_name.length == 0) {
+    $scope.validateChangeFirstName = function(first_name) {
+        $scope.valid = true;
+        if (!first_name || first_name.length == 0) {
             $scope.errors.first_name = 'invalid_firstName';
-            valid = false;
+           $scope.valid = false;
         }
 
-       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return {err:$scope.errors,valid:$scope.valid};
+    };
 
-        if (!re.test(profile.email)) {
-            $scope.errors.email = 'invalid_email';
-            valid = false;
+    $scope.validateChangeLastName = function(last_name) {
+        $scope.valid = true;
+        if (!last_name || last_name.length == 0 ) {
+            $scope.errors.last_name = 'invalid_lastName';
+            $scope.valid = false;
+        }
+        return {err:$scope.errors,valid:$scope.valid};
+    };
+
+
+    $scope.validateChangeEmail = function(email) {
+        $scope.valid = true;
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!re.test(email)) {
+            $scope.errors.email = true;
+            $scope.valid = false;
         };
-        return {err:$scope.errors,valid:valid};
+        return {err:$scope.errors,valid:$scope.valid};
     }
 
 });

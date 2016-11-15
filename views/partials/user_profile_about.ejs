@@ -22,9 +22,9 @@
             {{profile.summary }}
         </div>
 
-        <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
+        <form data-ng-submit="submit('summary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
             <div class="fg-line">
-                <textarea data-ng-model="profile.summary" class="form-control" rows="5" placeholder="Resumen..."></textarea>
+                <textarea data-ng-model="form.summary" class="form-control" rows="5" placeholder="Resumen..."></textarea>
             </div>
             <div class="m-t-10">
                 <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
@@ -82,8 +82,8 @@
                 <dd>
                     <div class="form-group {{errors.first_name ? 'has-error' : ''}}">
                         <div class="fg-line">
-                            <input data-ng-model="profile.first_name" type="text" class="form-control"
-                                   value="{{ profile.first_name }}" placeholder="ej. Aida" ng-blur="errors.first_name = true">
+                            <input data-ng-model="form.first_name" type="text" class="form-control"
+                                   value="{{ profile.first_name }}" placeholder="ej. Aida" ng-blur=validateChangeFirstName(form.first_name)>
                         </div>
                         <small ng-if="errors.first_name" class="help-block">El nombre es obligarotio</small>
                     </div>
@@ -93,10 +93,12 @@
             <dl class="dl-horizontal">
                 <dt class="p-t-10">Apellido</dt>
                 <dd>
+                    <div class="form-group {{errors.last_name ? 'has-error' : ''}}">
                     <div class="fg-line">
-                        <input data-ng-model="profile.last_name" type="text" class="form-control" value="{{ profile.last_name }}" placeholder="ej. Pasut">
-
-
+                        <input data-ng-model="form.last_name" type="text" class="form-control"
+                               value="{{ profile.last_name }}" placeholder="ej. Pasut" ng-blur=validateChangeLastName(form.last_name)>
+                    </div>
+                        <small ng-if="errors.last_name" class="help-block">El apellido es obligarotio</small>
                     </div>
 
                 </dd>
@@ -138,6 +140,7 @@
 
             <div class="m-t-30">
                 <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
+
                 <button class="btn btn-link btn-sm" data-ng-click="cancEditInfo()" >Cancelar</button>
             </div>
         </form>
@@ -188,16 +191,18 @@
                 <dt class="p-t-10">Tel&eacute;fono</dt>
                 <dd>
                     <div class="fg-line">
-                        <input data-ng-model="profile.phone" type="text" class="form-control" placeholder="ej. +54 911 555-5555">
+                        <input data-ng-model="form.phone" type="text" class="form-control" placeholder="ej. +54 911 555-5555">
                     </div>
                 </dd>
             </dl>
             <dl class="dl-horizontal">
                 <dt class="p-t-10">Correo Electr&oacute;nico</dt>
                 <dd>
+                    <div class="form-group {{errors.email ? 'has-error' : ''}}">
                     <div class="fg-line">
-                        <input data-ng-model="profile.email" type="email" class="form-control" placeholder="ej. malinda.h@gmail.com">
-
+                        <input data-ng-model="form.email" type="email" class="form-control" placeholder="ej. malinda.h@gmail.com" ng-blur=validateChangeEmail(form.email)>
+                    </div>
+                        <small ng-if="errors.email" class="help-block">Se debe completar correctamente el email</small>
                     </div>
                 </dd>
             </dl>
@@ -205,7 +210,7 @@
                 <dt class="p-t-10">Twitter</dt>
                 <dd>
                     <div class="fg-line">
-                        <input data-ng-model="profile.twitter" type="text" class="form-control" placeholder="ej. @malinda">
+                        <input data-ng-model="form.twitter" type="text" class="form-control" placeholder="ej. @malinda">
                     </div>
                 </dd>
             </dl>
@@ -213,7 +218,7 @@
                 <dt class="p-t-10">Skype</dt>
                 <dd>
                     <div class="fg-line">
-                        <input data-ng-model="profile.skype" type="text" class="form-control" placeholder="ej. malinda.hollaway">
+                        <input data-ng-model="form.skype" type="text" class="form-control" placeholder="ej. malinda.hollaway">
                     </div>
                 </dd>
             </dl>
