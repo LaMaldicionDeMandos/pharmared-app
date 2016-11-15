@@ -76,6 +76,16 @@ angular.module('app.controllers', [])
 
         if ($scope.valid) {
             $scope.profile=$scope.form;
+
+            $scope.profile.summary = $scope.form.summary;
+            $scope.profile.first_name = $scope.form.first_name;
+            $scope.profile.last_name = $scope.form.last_name;
+            $scope.profile.phone = $scope.form.phone;
+            $scope.profile.email = $scope.form.email;
+            $scope.profile.twitter = $scope.form.twitter;
+            $scope.profile.skype = $scope.form.skype;
+
+
             updateProfileService.updateProfile($scope.profile).then(
                 function () {
                     console.log('update profile ok');
