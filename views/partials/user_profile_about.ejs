@@ -1,3 +1,50 @@
+<div class="pmb-block">
+    <div class="pmbb-header">
+        <h2>Frase</h2>
+
+        <ul class="actions" data-ng-if="editPhrase === 0">
+            <li class="dropdown" uib-dropdown>
+                <a href="" uib-dropdown-toggle>
+                    <i class="zmdi zmdi-more-vert"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a data-ng-click="editPh()" href="">Editar</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="pmbb-body p-l-30">
+        <div class="pmbb-view" data-ng-if="editPhrase === 0">
+            {{profile.phrase }}
+        </div>
+
+        <form data-ng-submit="submit('profilePhrase', 'Profile Phrase')" class="pmbb-edit" data-ng-if="editPhrase === 1">
+            <div class="fg-line">
+                <textarea data-ng-model="form.phrase" class="form-control" rows="3" placeholder="Frase..."></textarea>
+            </div>
+
+
+            <div class="m-t-10">
+                <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
+                <button class="btn btn-link btn-sm" data-ng-click="cancEditPh()" >Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="pmb-block">
     <div class="pmbb-header">
@@ -22,13 +69,15 @@
             {{profile.summary }}
         </div>
 
-        <form data-ng-submit="submit('summary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
+        <form data-ng-submit="submit('profileSummary', 'Profile Summary')" class="pmbb-edit" data-ng-if="editSummary === 1">
             <div class="fg-line">
                 <textarea data-ng-model="form.summary" class="form-control" rows="5" placeholder="Resumen..."></textarea>
             </div>
+
+
             <div class="m-t-10">
                 <button class="btn btn-primary btn-sm"  data-ng-click="guardar()" type="submit">Guardar</button>
-                <button class="btn btn-link btn-sm" data-ng-click="cancEditSum" >Cancelar</button>
+                <button class="btn btn-link btn-sm" data-ng-click="cancEditSum()" >Cancelar</button>
             </div>
         </form>
     </div>
@@ -74,6 +123,17 @@
                 <dt>Estado Civil</dt>
                 <dd>{{ profile.martial_status }}</dd>
             </dl>
+
+            <dl class="dl-horizontal">
+                <dt>Direcci&oacute;n</dt>
+                <dd>{{ profile.address.street }} - {{ profile.address.number }} - {{ profile.address.city }} - {{ profile.address.province }}              </dd>
+            </dl>
+
+
+
+
+
+
         </div>
 
         <form data-ng-submit="submit('profileInfo', 'Profile Information')" class="pmbb-edit" data-ng-if="editInfo === 1">
@@ -107,7 +167,7 @@
                 <dt class="p-t-10">Sexo</dt>
                 <dd>
                     <div class="fg-line">
-                        <select class="form-control">
+                        <select class="form-control" ng-model="form.gender">
                             <option>Femenino</option>
                             <option>Masculino</option>
                         </select>
@@ -118,7 +178,7 @@
                 <dt class="p-t-10">Fecha de Nacimiento</dt>
                 <dd>
                     <div class="dtp-container dropdown fg-line">
-                        <input type='text' class="form-control" data-dt-picker="DD/MM/YYYY" uib-dropdown-toggle placeholder="ej. 23/06/1988">
+                        <input type='text' class="form-control" ng-model="form.birthday" data-dt-picker="DD/MM/YYYY" uib-dropdown-toggle placeholder="ej. 23/06/1988">
                     </div>
                 </dd>
             </dl>
@@ -126,7 +186,8 @@
                 <dt class="p-t-10">Estado Civil</dt>
                 <dd>
                     <div class="fg-line">
-                        <select class="form-control">
+                        <select class="form-control" ng-model="form.martial_status">
+                            <option></option>
                             <option>Soltero/a</option>
                             <option>Casado/a</option>
                             <option>Divorciado/a</option>
@@ -135,6 +196,27 @@
                             <option>Otro</option>
                         </select>
                     </div>
+                </dd>
+            </dl>
+
+            <dl class="dl-horizontal">
+                <dt class="p-t-10">Direcci&oacute;n</dt>
+                <dd>
+                       <div class="fg-line">
+                           <input data-ng-model="form.address.street" type="text" class="form-control"
+                                  value="{{ profile.address.street }}" placeholder="Calle">
+
+                           <input data-ng-model="form.address.number" type="text" class="form-control"
+                                   value="{{ profile.address.number }}" placeholder="N&uacute;mero">
+
+                           <input data-ng-model="form.address.city" type="text" class="form-control"
+                                  value="{{ profile.address.city }}" placeholder="Localidad">
+
+                           <input data-ng-model="form.address.province" type="text" class="form-control"
+                                  value="{{ profile.address.province }}" placeholder="Provincia">
+
+                       </div>
+
                 </dd>
             </dl>
 

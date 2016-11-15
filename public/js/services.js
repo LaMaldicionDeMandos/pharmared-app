@@ -17,11 +17,9 @@ angular.module('app.services', []).
                     dataType: 'json',
                     data:profile
                 }).success(function (data) {
-                    console.log('servicio update profile ok');
                     def.resolve(data);
 
                 }).error(function (data, status) {
-                    console.log('servicio update profile error');
                     def.reject(data);
 
                 });

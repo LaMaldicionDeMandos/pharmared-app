@@ -20,7 +20,9 @@ angular.module('app.controllers', [])
     $scope.editSummary = 0;
     $scope.editInfo = 0;
     $scope.editContact = 0;
+    $scope.editPhrase = 0;
     $scope.form={};
+    $scope.form.address={};
     $scope.errors={};
     profileService.getProfile().then(
     function(data) {
@@ -50,7 +52,6 @@ angular.module('app.controllers', [])
 
     $scope.cancEditInfo=function(){
         $scope.editInfo=0;
-
         asignProfileToForm();
         $scope.errors={};
     };
@@ -71,12 +72,23 @@ angular.module('app.controllers', [])
         asignProfileToForm();
         $scope.errors={};
     };
+    $scope.editPh=function(){
+        $scope.editPhrase=1;
+    };
+    $scope.cancEditPh=function(){
+        $scope.editPhrase=0;
+        asignProfileToForm();
+        $scope.errors={};
+    };
+
+
     $scope.guardar=function(){
 
 
         if ($scope.valid) {
             $scope.profile=$scope.form;
 
+            $scope.profile.phrase = $scope.form.phrase;
             $scope.profile.summary = $scope.form.summary;
             $scope.profile.first_name = $scope.form.first_name;
             $scope.profile.last_name = $scope.form.last_name;
@@ -84,11 +96,18 @@ angular.module('app.controllers', [])
             $scope.profile.email = $scope.form.email;
             $scope.profile.twitter = $scope.form.twitter;
             $scope.profile.skype = $scope.form.skype;
+            $scope.profile.gender = $scope.form.gender;
+            $scope.profile.birthday = $scope.form.birthday;
+            $scope.profile.martial_status = $scope.form.martial_status;
+            $scope.profile.address.street = $scope.form.address.street;
+            $scope.profile.address.number = $scope.form.address.number;
+            $scope.profile.address.city = $scope.form.address.city;
+            $scope.profile.address.province = $scope.form.address.province;
 
 
             updateProfileService.updateProfile($scope.profile).then(
                 function () {
-                    console.log('update profile ok');
+
                 },
                 function (error) {
                     $scope.errors.updateProfile = true;
@@ -102,7 +121,7 @@ angular.module('app.controllers', [])
 
 
     $scope.submit = function(item, message) {
-       if($valid){
+       if($scope.valid){
         if (item === 'profileSummary') {
             $scope.editSummary = 0;
         }
@@ -115,6 +134,11 @@ angular.module('app.controllers', [])
         if (item === 'profileContact') {
             $scope.editContact = 0;
         }
+
+           if (item === 'profilePhrase') {
+               $scope.editPhrase = 0;
+           }
+
 
     }};
 
@@ -155,6 +179,7 @@ angular.module('app.controllers', [])
     };
 
 var asignProfileToForm=function() {
+    $scope.form.phrase = $scope.profile.phrase;
     $scope.form.summary = $scope.profile.summary;
     $scope.form.first_name = $scope.profile.first_name;
     $scope.form.last_name = $scope.profile.last_name;
@@ -162,6 +187,16 @@ var asignProfileToForm=function() {
     $scope.form.email = $scope.profile.email;
     $scope.form.twitter = $scope.profile.twitter;
     $scope.form.skype = $scope.profile.skype;
+    $scope.form.gender = $scope.profile.gender;
+    $scope.form.birthday = $scope.profile.birthday;
+    $scope.form.martial_status = $scope.profile.martial_status;
+    $scope.form.address.street = $scope.profile.address.street;
+    $scope.form.address.number = $scope.profile.address.number;
+    $scope.form.address.city = $scope.profile.address.city;
+    $scope.form.address.province = $scope.profile.address.province;
+
+
+
 }
     //agregar los campos que faltan!!!
 });
