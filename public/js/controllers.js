@@ -20,12 +20,20 @@ angular.module('app.controllers', [])
     $scope.editSummary = 0;
     $scope.editInfo = 0;
     $scope.editContact = 0;
-
+    $scope.form={};
     $scope.errors={};
     profileService.getProfile().then(
     function(data) {
         $scope.profile=data;
-        $scope.form=$scope.profile;
+        $scope.form.summary=$scope.profile.summary;
+        $scope.form.first_name=$scope.profile.first_name;
+        $scope.form.last_name=$scope.profile.last_name;
+        $scope.form.phone=$scope.profile.phone;
+        $scope.form.email=$scope.profile.email;
+        $scope.form.twitter=$scope.profile.twitter;
+        $scope.form.skype=$scope.profile.skype;
+
+        //agregar los campos que faltan!!!
         $scope.letters=($scope.profile.first_name.substr(0,1)+$scope.profile.last_name.substr(0,1)).toUpperCase();
         $scope.prof=true;
 
@@ -47,6 +55,8 @@ angular.module('app.controllers', [])
 
     $scope.cancEditInfo=function(){
         $scope.editInfo=0;
+
+
     };
     $scope.editSum=function(){
         $scope.editSummary=1;
@@ -89,6 +99,7 @@ angular.module('app.controllers', [])
 
         if (item === 'profileInfo') {
             $scope.editInfo = 0;
+
         }
 
         if (item === 'profileContact') {
@@ -119,13 +130,16 @@ angular.module('app.controllers', [])
 
 
     $scope.validateChangeEmail = function(email) {
+
         $scope.valid = true;
+       if (email){
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!re.test(email)) {
             $scope.errors.email = true;
             $scope.valid = false;
-        };
+        }
+       }
         return {err:$scope.errors,valid:$scope.valid};
     }
 
