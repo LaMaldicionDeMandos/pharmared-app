@@ -91,7 +91,8 @@
             </dl>
             <dl class="dl-horizontal">
                 <dt>Sexo</dt>
-                <dd>{{ profile.gender }}</dd>
+                <dd ng-if="profile.gender=='female'">Femenino</dd>
+                <dd ng-if="profile.gender=='male'">Masculino</dd>
             </dl>
             <dl class="dl-horizontal">
                 <dt>Fecha de Nacimiento</dt>
@@ -99,7 +100,14 @@
             </dl>
             <dl class="dl-horizontal">
                 <dt>Estado Civil</dt>
-                <dd>{{ profile.martial_status }}</dd>
+                <dd ng-if="profile.martial_status=='single'">Soltero/a</dd>
+                <dd ng-if="profile.martial_status=='married'">Casado/a</dd>
+                <dd ng-if="profile.martial_status=='divorced'">Divorciado/a</dd>
+                <dd ng-if="profile.martial_status=='separate'">Separado/a</dd>
+                <dd ng-if="profile.martial_status=='widower'">Viudo/a</dd>
+                <dd ng-if="profile.martial_status=='other'">Otro</dd>
+                              
+
             </dl>
 
             <dl class="dl-horizontal">
