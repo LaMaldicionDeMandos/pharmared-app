@@ -15,7 +15,7 @@ angular.module('app.controllers', [])
 
     })
 
-.controller('ProfileController',function($scope,profileService,updateProfileService){
+.controller('ProfileController',function($scope,profileService,updateProfileService, cfpLoadingBar){
     $scope.valid=true;
     $scope.editSummary = 0;
     $scope.editInfo = 0;
@@ -26,8 +26,12 @@ angular.module('app.controllers', [])
     $scope.errors={};
     profileService.getProfile().then(
     function(data) {
-        $scope.profile=data;
+        $scope.profile=data.profile;
+        if (!$scope.profile.address){
+        $scope.profile.address={};
+        }
 
+        $scope.user_id=data.user_id;
         asignProfileToForm();
 
 
@@ -86,8 +90,6 @@ angular.module('app.controllers', [])
 
 
         if ($scope.valid) {
-            $scope.profile=$scope.form;
-
             $scope.profile.phrase = $scope.form.phrase;
             $scope.profile.summary = $scope.form.summary;
             $scope.profile.first_name = $scope.form.first_name;
@@ -194,11 +196,38 @@ var asignProfileToForm=function() {
     $scope.form.address.number = $scope.profile.address.number;
     $scope.form.address.city = $scope.profile.address.city;
     $scope.form.address.province = $scope.profile.address.province;
-
-
-
 }
-    //agregar los campos que faltan!!!
+
+    $scope.updatePhoto = function(file) {
+        if (!file) return;
+        cfpLoadingBar.start();
+        var task = firebase.storage().ref().child('photos/' + $scope.user_id).put(file);
+        task.on('state_changed', function(snapshot){
+            console.log('Progress: ' + snapshot);
+        }, function(error) {
+            console.log('Error: ' + error);
+          //  swal({title:'Ops!', text:'La foto no pudo cambiarse.', type:'error'});
+        }, function() {
+            var downloadURL = task.snapshot.downloadURL;
+            console.log('Success!! :) ' + downloadURL);
+            $scope.profile.picture = downloadURL;
+      //      console.log('La foto no pudo cambiarse.', 'photo');
+            updateProfileService.updateProfile($scope.profile).then(
+                function () {
+                    console.log($scope.prof);
+                },
+                function (error) {
+                    $scope.errors.updateProfile = true;
+                    console.log('update profile error');
+                }
+            );
+        });
+    }
+
+
+
+
+
 });
 
 

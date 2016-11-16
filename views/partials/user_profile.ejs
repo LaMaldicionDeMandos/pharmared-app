@@ -37,8 +37,9 @@
 
 
                         <img ng-if="profile.picture" class="img-responsive" src={{profile.picture}} alt="">
-
-                        <ng-avatar ng-if="!profile.picture && prof" initials={{letters}} picture-format="png" colors-palette="color_palette" auto-color="true" width="259px"></ng-avatar>
+                        <div ng-show="!profile.picture">
+                            <ng-avatar ng-if="profile && !profile.picture" initials={{letters}} picture-format="png" colors-palette="color_palette" auto-color="true" width="259px"></ng-avatar>
+                        </div>
 
 
 
@@ -57,7 +58,7 @@
                         </div>
                     </div>-->
 
-                    <a href="" class="pmop-edit">
+                    <a href="" class="pmop-edit" data-ng-submit="console.log('submit image')" ngf-select="updatePhoto($file)">
                         <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Cambiar Foto</span>
                     </a>
                 </div>
