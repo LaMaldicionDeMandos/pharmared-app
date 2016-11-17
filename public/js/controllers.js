@@ -15,7 +15,9 @@ angular.module('app.controllers', [])
 
     })
 
-.controller('ProfileController',function($scope,profileService,updateProfileService, cfpLoadingBar){
+.controller('profileController',function($scope,profileService,updateProfileService, cfpLoadingBar){
+    $scope.editPass=1;
+
     $scope.valid=true;
     $scope.editSummary = 0;
     $scope.editInfo = 0;
@@ -224,7 +226,20 @@ var asignProfileToForm=function() {
         });
     }
 
+    /*$scope.logout = function() {
+        var success = function() {
+            $window.location.href = '/index';
+        };
+        var fail = function(error) {
+            console.log('Error on logout ' + error);
+        };
+        userService.logout().then(success, fail);
+    };*/
 
+   $scope.sidebarToggle = {
+        left: false,
+        right: false
+    }
 
 
 

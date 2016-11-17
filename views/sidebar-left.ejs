@@ -1,5 +1,5 @@
 <div class="sidebar-inner c-overflow">
-    <div class="profile-menu" ng-controller="ProfileController">
+    <div class="profile-menu" ng-controller="profileController">
         <a href="" toggle-submenu>
             <div class="profile-pic" >
 
@@ -23,9 +23,23 @@
 
         <ul class="main-menu" ng-controller="sidebarController">
             <li data-ui-sref-active="active">
-                <a data-ui-sref="user_profile.user_profile_about" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i> Perfil</a>
+                <a data-ui-sref="user_profile.user_profile_about" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-account"></i>Mi Perfil</a>
+            </li>
+
+
+            <li>
+
+              <a href="" ng-click=""><i class="zmdi zmdi-lock zmdi-hc-fw"></i>Seguridad y Privacidad</a>
 
             </li>
+
+            <li>
+
+                <a data-ui-sref="change_password" ng-click=""><i class="zmdi zmdi-key zmdi-hc-fw"></i>Contrase&ntilde;a</a>
+
+
+            </li>
+
             <li>
                <a href="" ng-click="logout()"><i class="zmdi zmdi-time-restore"></i> Salir</a>
             </li>
@@ -36,7 +50,7 @@
     <ul class="main-menu">
         
         <li data-ui-sref-active="active">
-            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home"></i>Muro</a>
+            <a data-ui-sref="home" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-home"></i>Home</a>
         </li>
         <!--<li data-ui-sref-active="active" ng-if="'USER_ROLE' == 'root' || 'USER_ROLE' == 'sadmin'" >
             <a data-ui-sref="admins" data-ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-shield-security"></i> Administradores</a>

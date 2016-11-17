@@ -57,6 +57,13 @@ app.config(function ($stateProvider, $urlRouterProvider){
                 templateUrl: 'partials/user_profile_about'
             })
 
+            .state ('change_password', {
+                url: '/change_password',
+                templateUrl: 'partials/change_password'
+            })
+
+
+
     /* .state ('profile', {
          url: '/profile/{id}',
          templateUrl: function($stateParams) {
