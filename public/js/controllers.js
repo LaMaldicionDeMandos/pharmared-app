@@ -242,10 +242,11 @@ var asignProfileToForm=function() {
     .controller('securityController',function($scope, cfpLoadingBar,retrieveService) {
         $scope.valid=true;
         $scope.errors={};
-        $scope.forgotpass=false;
+        $scope.form={};
+        $scope.form.forgotPass=false;
 
 
-        $scope.editPass=1;
+
 
         $scope.validateNewPass=function(newPass){
             var validPass=validatePass(newPass,'new');
@@ -260,7 +261,7 @@ var asignProfileToForm=function() {
             if (!validPass){
                 $scope.errors.new_pass_repeat=true;
             }
-            if (passRepeat!=newPass){
+            if (passRepeat!=newPass && (passRepeat || newPass)){
                 $scope.errors.new_pass_missmatch=true;
             }
         };
@@ -288,7 +289,7 @@ var asignProfileToForm=function() {
             return $scope.valid;
         };
         $scope.delNew=function(){
-            $scope.new_pass_repeat="";
+            $scope.form.new_pass_repeat="";
             $scope.errors.new_pass_repeat=false;
             $scope.errors.new_pass_missmatch=false;
             $scope.errors.new_pass=false;
@@ -322,7 +323,7 @@ var asignProfileToForm=function() {
 
         $scope.forgotP = function() {
 
-            $scope.forgotpass=true;
+            $scope.form.forgotPass="true";
 
         };
 
@@ -341,25 +342,30 @@ var asignProfileToForm=function() {
                 };
                 retrieveService.retrievePassw(mailRet).then(success, fail);
             } else {
-                $scope.errors.invalid_mail_retrieve = true;
+                $scope.errors.email = true;
             }
 
 
-            var validateRetrievePass=function(mailRet)
-            {
-                var valid = true;
-
-                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-                if (!re.test(mailRet)) {
-                    valid = false;
-                }
-
-
-                return valid;
-            };
 
         };
 
+        var validateRetrievePass=function(mailRet)
+        {
+            var valid = true;
 
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+            if (!re.test(mailRet)) {
+                valid = false;
+            }
+
+
+            return valid;
+        };
+
+
+        $scope.cancRet=function(){
+
+          $scope.form.forgotPass=false;
+        };
     });

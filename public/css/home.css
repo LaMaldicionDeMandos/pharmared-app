@@ -1,3 +1,4 @@
+
 .hover-white:hover {
     color: white !important;
 }
@@ -13,4 +14,8 @@
 }
 .pt-6{
     padding-top:6%;
+}
+
+.btn-green{
+    color:#66a554;
 }

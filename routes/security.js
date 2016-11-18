@@ -41,6 +41,7 @@ var retrievePassword=function(req,res){
     )
 };
 router.post('/retrieve/:username', retrievePassword);
+
 var confirmRetrieve=function(username) {
     var def = q.defer();
     request({
