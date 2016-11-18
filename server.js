@@ -110,6 +110,14 @@ app.get('/authorization/:hash',
 app.get('/partials/:view', partials.partials);
 app.use('/profile/',profile);
 app.use('/password',security);
+
+app.get('/logout', ensureAuthenticated, function(req, res) {
+  console.log('Call logout');
+  req.logout();
+  req.session.destroy();
+  return res.redirect('/');
+});
+
 /**
  * Start Server
  */

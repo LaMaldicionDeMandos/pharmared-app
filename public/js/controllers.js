@@ -223,17 +223,17 @@ var asignProfileToForm=function() {
                 }
             );
         });
-    }
+    };
 
-    /*$scope.logout = function() {
+    $scope.logout = function() {
         var success = function() {
             $window.location.href = '/index';
         };
         var fail = function(error) {
             console.log('Error on logout ' + error);
         };
-        userService.logout().then(success, fail);
-    };*/
+        profileService.logout().then(success, fail);
+    };
 
 
 
