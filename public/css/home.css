@@ -7,8 +7,10 @@
     text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
-.logo-title{
-    display:inline-flex;
+.logo-title {
+    display: inline-flex;
     align-items: baseline;
-
+}
+.pt-6{
+    padding-top:6%;
 }

@@ -236,12 +236,78 @@ var asignProfileToForm=function() {
         userService.logout().then(success, fail);
     };*/
 
-   $scope.sidebarToggle = {
-        left: false,
-        right: false
+
+    $scope.validateNewPass=function(newPass){
+        var validPass=validatePass(newPass,'new');
+        if (!validPass){
+           $scope.errors.new_pass=true;
+        }
+
+    };
+
+    $scope.validatePassRepeat=function(passRepeat,newPass){
+        var validPass=validatePass(passRepeat,'repeat');
+        if (!validPass){
+            $scope.errors.new_pass_repeat=true;
+        }
+        if (passRepeat!=newPass){
+            $scope.errors.new_pass_missmatch=true;
+        }
+    };
+
+
+
+    var validatePass=function(pass,typePass){
+       if (typePass=='old'){
+           $scope.errors.actual_pass=false;
+       }
+        if (typePass=='new'){
+            $scope.errors.new_pass=false;
+        }
+        if (typePass=='repeat'){
+            $scope.new_pass_repeat=false;
+            $scope.errors.new_pass_missmatch=false;
+        }
+
+
+        $scope.valid=true;
+        var re=/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        if (!re.test(pass)) {
+            $scope.valid = false;
+        };
+        return $scope.valid;
+    };
+    $scope.delNew=function(){
+        $scope.form.new_pass_repeat="";
+        $scope.errors.new_pass_repeat=false;
+        $scope.errors.new_pass_missmatch=false;
+        $scope.errors.new_pass=false;
+};
+
+    $scope.delActual=function() {
+         $scope.errors.actual_pass = false;
+        };
+
+
+    $scope.delRepeat=function() {
+            $scope.errors.new_pass_missmatch=false;
+            $scope.errors.new_pass_repeat=false;
+          };
+
+    $scope.guardarPass=function(oldPass,newPass) {
+        if ($scope.valid && newPass) {
+            updateProfileService.updatePass(oldPass, newPass).then(
+                function () {
+                    console.log('update pass ok');
+                },
+                function (data,error) {
+                    $scope.errors[data] = true;
+                    console.log(data);
+                }
+            );
+        }
+
     }
-
-
 
 });
 

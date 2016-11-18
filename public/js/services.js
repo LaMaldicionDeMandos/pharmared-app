@@ -25,6 +25,23 @@ angular.module('app.services', []).
                 });
                 return def.promise;
 
+            },
+
+            updatePass:function(oldPass,newPass){
+                var def = $q.defer();
+                $http({
+                    url: 'profile/password',
+                    method: 'post',
+                    dataType: 'json',
+                    data:{old:oldPass,new:newPass}
+                }).success(function () {
+                    def.resolve();
+
+                }).error(function (data, status) {
+                    def.reject(data,status);
+
+                });
+                return def.promise;
             }
 
             };
