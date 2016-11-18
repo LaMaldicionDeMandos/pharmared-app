@@ -49,25 +49,8 @@ var putProfile=function(req,res){
 };
 router.put('/me', putProfile);
 
-var postPassword=function(req,res){
-    request({
-        method: 'post',
-        body:req.body,
-        url: config.change_password_url+'?accessToken='+req.user.accessToken,
-        json:true
-    }, function (error, response,body) {
-        if (error)  {
-            res.status(400).send();
-        }
-        else {
-                if (res.statusCode==400)
-                res.status(201).send();
 
-        }
 
-    });
 
-};
-router.post('/password', postPassword);
 
 module.exports = router;

@@ -13,6 +13,7 @@ var express = require('express'),
 
   partials = require('./routes/partials'),
   profile = require('./routes/profile'),
+  security=require('./routes/security'),
   http = require('http'),
   path = require('path');
 
@@ -108,6 +109,7 @@ app.get('/authorization/:hash',
     });
 app.get('/partials/:view', partials.partials);
 app.use('/profile/',profile);
+app.use('/password',security);
 /**
  * Start Server
  */
