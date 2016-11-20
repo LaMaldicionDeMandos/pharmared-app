@@ -15,7 +15,7 @@ angular.module('app.controllers', [])
 
     })
 
-.controller('profileController',function($scope,profileService,updateProfileService, cfpLoadingBar){
+.controller('profileController',function($scope,profileService, cfpLoadingBar){
 
     $scope.valid=true;
     $scope.editSummary = 0;
@@ -108,7 +108,7 @@ angular.module('app.controllers', [])
             $scope.profile.address.province = $scope.form.address.province;
 
 
-            updateProfileService.updateProfile($scope.profile).then(
+            profileService.updateProfile($scope.profile).then(
                 function () {
 
                 },
@@ -213,7 +213,7 @@ var asignProfileToForm=function() {
             console.log('Success!! :) ' + downloadURL);
             $scope.profile.picture = downloadURL;
       //      console.log('La foto no pudo cambiarse.', 'photo');
-            updateProfileService.updateProfile($scope.profile).then(
+            profileService.updateProfile($scope.profile).then(
                 function () {
                     console.log($scope.prof);
                 },
@@ -244,7 +244,7 @@ var asignProfileToForm=function() {
 
 })
 
-    .controller('securityController',function($scope, retrieveService,profileService,$window,cfpLoadingBar) {
+    .controller('securityController',function($scope, securityService,profileService,$window,cfpLoadingBar) {
         $scope.valid=true;
         $scope.errors={};
         $scope.form={};
@@ -327,7 +327,7 @@ var asignProfileToForm=function() {
 
         $scope.guardarPass=function(oldPass,newPass) {
             if ($scope.valid && newPass) {
-                updateProfileService.updatePass(oldPass, newPass).then(
+                securityService.updatePass(oldPass, newPass).then(
                     function () {
                         console.log('update pass ok');
                     },
@@ -369,9 +369,10 @@ var asignProfileToForm=function() {
                         type: "success",
                         showCancelButton: true,
                         confirmButtonText: "Ir a Cambiar Contraseña",
-                        confirmButtonClass: "btn btn-link btn-green",
+                        confirmButtonClass: "btn-success",
                         cancelButtonText: "Ir al Muro",
-
+                        cancelButtonClass:"btn-success",
+                        //"btn btn-link btn-green",
                         closeOnConfirm:true,
                         closeOnCancel: true
                     }, function(isConfirm){
@@ -389,7 +390,7 @@ var asignProfileToForm=function() {
                     $scope.errors.retrieve = "true";
 
                 };
-                retrieveService.retrievePassw(mailRet).then(success, fail);
+                securityService.retrievePassw(mailRet).then(success, fail);
             } else {
                 $scope.errors.email = true;
             }
