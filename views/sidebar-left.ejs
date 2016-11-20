@@ -29,18 +29,18 @@
 
             <li>
 
-              <a href="" ng-click=""><i class="zmdi zmdi-lock zmdi-hc-fw"></i>Seguridad y Privacidad</a>
+              <a href="" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-lock zmdi-hc-fw"></i>Seguridad y Privacidad</a>
 
             </li>
 
             <li>
 
-                <a data-ui-sref="change_password" ng-click=""><i class="zmdi zmdi-key zmdi-hc-fw"></i>Contrase&ntilde;a</a>
+                <a data-ui-sref="change_password" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-key zmdi-hc-fw"></i>Contrase&ntilde;a</a>
 
 
             </li>
 
-            <li>
+            <li ng-controller="logoutController">
                <a href="" ng-click="logout()"><i class="zmdi zmdi-time-restore"></i> Salir</a>
             </li>
 

@@ -60,7 +60,7 @@ app.config(function ($stateProvider, $urlRouterProvider){
             .state ('change_password', {
                 url: '/change_password',
                 templateUrl: 'partials/change_password'
-            })
+            });
 
 
 

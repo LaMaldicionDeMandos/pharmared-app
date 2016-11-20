@@ -108,14 +108,16 @@ app.get('/authorization/:hash',
       res.redirect('/');
     });
 app.get('/partials/:view', partials.partials);
-app.use('/profile/',profile);
+app.use('/profile/',ensureAuthenticated);
+app.use('/profile/', profile);
+
 app.use('/password',security);
 
 app.get('/logout', ensureAuthenticated, function(req, res) {
   console.log('Call logout');
   req.logout();
   req.session.destroy();
-  return res.redirect('/');
+  return res.send(config.fail_authorisation_url);
 });
 
 /**
@@ -135,7 +137,8 @@ server.on('error', function(error) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return next();
+    next();
+  } else {
+    return res.redirect(config.fail_authorisation_url);
   }
-  return res.redirect(config.fail_authorisation_url);
 };

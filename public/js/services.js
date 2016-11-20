@@ -63,32 +63,36 @@ angular.module('app.services', []).
                 def.reject(data);
             });
             return def.promise;
-        },
-            logout: function() {
-                var def = $q.defer();
-                $http({
-                    url: '/logout',
-                    method: 'get'
-                }).success(function() {
-                    def.resolve();
-                }).error(function(data, status) {
-                    def.reject(data);
-                });
-                return def.promise;
-            }
-
+        }
 
     } ;
 
 })
+    .factory('logoutService', function($http, $q) {
+        return {
 
+    logout: function() {
+        var def = $q.defer();
+        $http({
+            url: '/logout',
+            method: 'get'
+        }).success(function(url) {
+            def.resolve(url);
+        }).error(function(data, status) {
+            def.reject(data);
+        });
+        return def.promise;
+    }
 
-    .factory('retrieveService', function($http, $q) {
+        };
+    })
+
+.factory('retrieveService', function($http, $q) {
         return {
             retrievePassw: function (username) {
                 var def = $q.defer();
                 $http({
-                    url: '/retrieve/'+username,
+                    url: 'password/retrieve/'+username,
                     method: 'post',
                     // data: username,
                     // headers: {'Content-Type': 'application/json'}

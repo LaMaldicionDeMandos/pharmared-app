@@ -225,25 +225,44 @@ var asignProfileToForm=function() {
         });
     };
 
-    $scope.logout = function() {
-        var success = function() {
-            $window.location.href = '/index';
-        };
-        var fail = function(error) {
-            console.log('Error on logout ' + error);
-        };
-        profileService.logout().then(success, fail);
-    };
+
 
 
 
 })
+    .controller('logoutController',function($scope,logoutService,$window){
+        $scope.logout = function() {
+            var success = function(url) {
+            $window.location.href = url;
 
-    .controller('securityController',function($scope, cfpLoadingBar,retrieveService) {
+     };
+        var fail = function(error) {
+        console.log('Error on logout ' + error);
+    };
+    logoutService.logout().then(success, fail);}
+
+
+})
+
+    .controller('securityController',function($scope, retrieveService,profileService,$window,cfpLoadingBar) {
         $scope.valid=true;
         $scope.errors={};
         $scope.form={};
         $scope.form.forgotPass=false;
+
+        profileService.getProfile().then(
+            function(data) {
+                $scope.profile=data.profile;
+                $scope.form.email=$scope.profile.email;
+
+
+
+
+            },
+            function(error) {
+                $scope.errors.getProfile= true;
+
+            });
 
 
 
@@ -319,21 +338,51 @@ var asignProfileToForm=function() {
                 );
             }
 
-        }
+        };
 
         $scope.forgotP = function() {
 
-            $scope.form.forgotPass="true";
+            $scope.form.forgotPass=true;
+
+        };
+
+        $scope.resetForgotP = function() {
+
+            $scope.form.forgotPass=false;
 
         };
 
         $scope.retrievePass=function(mailRet) {
+            cfpLoadingBar._completeAnimation;
             $scope.errors = {};
             var valid = validateRetrievePass(mailRet);
             if (valid) {
 
                 var success = function () {
                     $scope.successRet = true;
+                  //  swal({title:'Error!', text:'El usuario no pudo editarse', type:'error', timer:2000,
+                  //      showConfirmButton: false});
+
+                    swal({
+                        title: "Contraseña Restablecida",
+                        text: "A continuación enviaremos un email con la nueva contraseña",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonText: "Ir a Cambiar Contraseña",
+                        confirmButtonClass: "btn btn-link btn-green",
+                        cancelButtonText: "Ir al Muro",
+
+                        closeOnConfirm:true,
+                        closeOnCancel: true
+                    }, function(isConfirm){
+                        if (isConfirm) {
+
+                            window.location.reload();
+
+                        } else {
+                           $window.location.href ='#/home';
+                        }
+                    });
 
                 };
                 var fail = function () {
@@ -368,4 +417,7 @@ var asignProfileToForm=function() {
 
           $scope.form.forgotPass=false;
         };
+
+
+
     });
