@@ -60,7 +60,7 @@
     animation: article forwards .5s;
     animation-delay:0s;
     animation-timing-function: ease-in-out;
-            cubic-bezier(.25, .1, .25, 1);
+     /*       cubic-bezier(.25, .1, .25, 1);*/
 }
 
 @keyframes article {
@@ -96,14 +96,5 @@
 }
 
 
-    /*<html>
-<header>
-<link rel="stylesheet" type="text/css" href="prueba.css">
-</header>
-<body>
-<section role='presentation'>
-<article></article>
-</section>
-</body>
-</html>*/
+
 

@@ -245,6 +245,7 @@ var asignProfileToForm=function() {
 })
 
     .controller('securityController',function($scope, securityService,profileService,$window,cfpLoadingBar) {
+
         $scope.valid=true;
         $scope.errors={};
         $scope.form={};
