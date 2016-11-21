@@ -250,6 +250,7 @@ var asignProfileToForm=function() {
         $scope.form={};
         $scope.form.forgotPass=false;
 
+
         profileService.getProfile().then(
             function(data) {
                 $scope.profile=data.profile;
@@ -342,9 +343,10 @@ var asignProfileToForm=function() {
 
         $scope.forgotP = function() {
 
-            $scope.form.forgotPass=true;
+           $scope.form.forgotPass=true;
 
         };
+
 
         $scope.resetForgotP = function() {
 
