@@ -346,6 +346,7 @@ var asignProfileToForm=function() {
 
            $scope.form.forgotPass=true;
 
+
         };
 
 
