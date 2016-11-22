@@ -244,13 +244,13 @@ var asignProfileToForm=function() {
 
 })
 
-    .controller('securityController',function($scope, securityService,profileService,$window,cfpLoadingBar) {
+    .controller('securityController',function($scope, securityService,profileService,$window,cfpLoadingBar, $timeout) {
 
         $scope.valid=true;
         $scope.errors={};
         $scope.form={};
         $scope.form.forgotPass=false;
-
+        $scope.passwordForm = 'default';
 
         profileService.getProfile().then(
             function(data) {
@@ -343,17 +343,16 @@ var asignProfileToForm=function() {
         };
 
         $scope.forgotP = function() {
-
            $scope.form.forgotPass=true;
-
-
+            $scope.passwordForm = 'forgot-pass';
         };
 
 
         $scope.resetForgotP = function() {
-
-            $scope.form.forgotPass=false;
-
+            $scope.passwordForm = 'anti-forgot-pass';
+            $timeout(function() {
+                $scope.form.forgotPass=false;
+            }, 150);
         };
 
         $scope.retrievePass=function(mailRet) {
@@ -419,8 +418,7 @@ var asignProfileToForm=function() {
 
 
         $scope.cancRet=function(){
-
-          $scope.form.forgotPass=false;
+            $scope.resetForgotP();
         };
 
 

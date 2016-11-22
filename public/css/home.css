@@ -27,19 +27,31 @@
 }
 
 
+.form-animation-default {
 
-.article {
+}
 
+.form-animation-forgot-pass {
     margin-top:0%;
     padding-top:6%;
     padding-bottom:6%;
-    animation: article forwards 0.15s;
+    animation: forgot-pass forwards 0.15s;
     animation-delay:0s;
     animation-timing-function: ease-in-out;
     /*       cubic-bezier(.25, .1, .25, 1);*/
 }
 
-@keyframes article {
+.form-animation-anti-forgot-pass {
+    margin-top:0%;
+    padding-top:0%;
+    padding-bottom:0%;
+    animation: anti-forgot-pass forwards .15s;
+    animation-delay:0s;
+    animation-timing-function: ease-in-out;
+    /*       cubic-bezier(.25, .1, .25, 1);*/
+}
+
+@keyframes forgot-pass {
     0% {
         margin-top:0%;
         padding-top:6%;
@@ -62,11 +74,31 @@
 
     }
     100% {
-
         margin-top:6%;
         padding-top:0%;
         padding-bottom:0%;
+    }
+}
 
-
+@keyframes anti-forgot-pass {
+    0% {
+        margin-top:6%;
+        padding-top:0%;
+        padding-bottom:0%;
+    }
+    25% {
+        margin-top:4%;
+        padding-top:2%;
+        padding-bottom:2%;
+    }
+    60% {
+        margin-top:2%;
+        padding-top:4%;
+        padding-bottom:4%;
+    }
+    99% {
+        margin-top:0%;
+        padding-top:6%;
+        padding-bottom:6%;
     }
 }
