@@ -44,8 +44,15 @@ app.config(function ($stateProvider, $urlRouterProvider){
                 templateUrl: '/partials/admin_user'
             })*/
 
-
-
+            .state ('entity_profile', {
+                url: '/entity_profile',
+                templateUrl: '/partials/entity_profile'
+            })
+                     
+            .state ('entity_profile.entity_profile_about', {
+                url: '/entity_profile_about',
+                templateUrl: 'partials/entity_profile_about'
+            })
 
 
             .state ('user_profile', {

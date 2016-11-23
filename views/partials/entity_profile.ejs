@@ -1,0 +1,152 @@
+<div class="container" ng-controller="entityProfileController">
+
+    <div class="block-header">
+        <h2>{{form.phantasy_name}} <small>{{entity_profile.phrase}}</small></h2>
+        <div ng-if="!entity_profile.phrase">
+
+            </br>
+        </div>
+        <!--    <ul class="actions m-t-20 hidden-xs">
+                <li class="dropdown" uib-dropdown>
+                    <a href="" uib-dropdown-toggle>
+                        <i class="zmdi zmdi-more-vert"></i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a href="">Privacy Settings</a>
+                        </li>
+                        <li>
+                            <a href="">Account Settings</a>
+                        </li>
+                        <li>
+                            <a href="">Other Settings</a>
+                        </li>
+                    </ul>
+            </li>
+        </ul>-->
+    </div>
+
+    <div class="card" id="profile-main">
+        <!--data-ng-controller="profileCtrl as pctrl"-->
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <a href="">
+
+
+
+                        <img ng-if="entity_profile.picture" class="img-responsive" src={{entity_profile.picture}} alt="">
+                        <div ng-show="!entity_profile.picture">
+                            <ng-avatar ng-if="entity_profile && !entity_profile.picture" initials={{letters}} picture-format="png" colors-palette="color_palette" auto-color="true" width="259px"></ng-avatar>
+                        </div>
+
+
+
+
+                    </a>
+
+                    <!-- <div class="dropdown pmop-message" uib-dropdown>
+                         <button uib-dropdown-toggle class="btn bgm-white btn-float">
+                             <i class="zmdi zmdi-comment-text-alt"></i>
+                         </button>
+
+                         <div class="dropdown-menu stop-propagate">
+                             <textarea placeholder="Write something..."></textarea>
+
+                             <button class="btn bgm-green btn-float"><i class="zmdi zmdi-mail-send"></i></button>
+                         </div>
+                     </div>-->
+
+                    <a href="" class="pmop-edit" data-ng-submit="console.log('submit image')" ngf-select="updatePhoto($file)">
+                        <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Cambiar Foto</span>
+                    </a>
+                </div>
+
+
+                <div class="pmo-stat">
+
+                 <!--   <h2 ng-if="entity_profile.roles[0]=='root'" class="m-0 c-white">Usuario Principal</h2>-->
+
+                </div>
+            </div>
+
+            <div class="pmo-block pmo-contact hidden-xs">
+                <h2>Contacto</h2>
+
+                <ul>
+                    <li ng-if="form.phone"><i class="zmdi zmdi-phone"></i> {{ form.phone }}</li>
+
+                    <li ng-if="form.email"><i class="zmdi zmdi-email"></i>
+                        <a href="mailto://{{form.email}}">
+                            {{form.email}}
+                        </a></li>
+
+
+                    <li ng-if="form.skype"><i class="zmdi zmdi-facebook-box"></i> {{ form.skype }}</li>
+                    <li ng-if="form.twitter"><i class="zmdi zmdi-twitter"></i> {{ form.twitter }} </li>
+                    <li ng-if="form.address.city || form.address.province || form.address.street || form.address.number">
+                        <i class="zmdi zmdi-pin"></i>
+                        <address class="m-b-0">
+                            {{ form.address.street }}, <br/>
+                            {{ form.address.number }}, <br/>
+                            {{ form.address.city }}, <br/>
+                            {{ form.address.province }}
+                        </address>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- <div class="pmo-block pmo-items hidden-xs">
+                 <h2>Connections</h2>
+
+                 <div class="pmob-body">
+                     <div class="row">
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/5.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/6.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/7.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/8.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/1.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/2.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/3.jpg" alt="">
+                         </a>
+                         <a href="" class="col-xs-2">
+                             <img class="img-circle" src="img/profile-pics/4.jpg" alt="">
+                         </a>
+                     </div>
+                 </div>
+             </div>-->
+        </div>
+
+        <div class="pm-body clearfix" >
+            <ul class="tab-nav tn-justified" data-ng-include="'partials/entity_profile_menu'"></ul>
+
+            <data ui-view></data>
+        </div>
+    </div>
+</div>

@@ -74,6 +74,48 @@ angular.module('app.services', [])
             }
         } ;
     })
+
+    .factory('entityProfileService',function($http, $q){
+        var cacheProfile;
+        return {
+            getProfile: function () {
+                var def = $q.defer();
+                if (cacheProfile) {
+                    def.resolve(cacheProfile);
+                } else {
+                    $http({
+                        url: '/entity/me',
+                        method: 'get',
+                        dataType: 'json',
+                    }).success(function (data) {
+                        cacheProfile = data;
+                        def.resolve(cacheProfile);
+                    }).error(function (data, status) {
+                        def.reject(data);
+                    });
+                }
+                return def.promise;
+            },
+            updateProfile:function(profile){
+                var def = $q.defer();
+                $http({
+                    url: '/entity/me',
+                    method: 'put',
+                    dataType: 'json',
+                    data:profile
+                }).success(function (data) {
+                    cacheProfile = profile;
+                    def.resolve(data);
+                }).error(function (data, status) {
+                    def.reject(data);
+                });
+                return def.promise;
+            }
+        } ;
+    })
+
+
+
     .factory('logoutService', function($http, $q) {
         return {
             logout: function() {
