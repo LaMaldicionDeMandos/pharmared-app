@@ -26,8 +26,10 @@
                 <a data-ui-sref="user_profile.user_profile_about" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-hc-fw zmdi-account"></i>Mi Perfil</a>
             </li>
 
-            <li>
-                <a data-ui-sref="entity_profile.entity_profile_about" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-hc-fw zmdi-account"></i>Mi Entidad</a>
+            <li ng-controller="entityProfileController">
+                <a ng-if="entity_profile.type=='PHARMACY'" data-ui-sref="entity_profile.entity_profile_about" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-hc-fw zmdi-account"></i>Mi Farmacia</a>
+                <a ng-if="entity_profile.type=='LABORATORY'" data-ui-sref="entity_profile.entity_profile_about" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-hc-fw zmdi-account"></i>Mi Laboratorio</a>
+                <a ng-if="entity_profile.type=='DRUGSTORE'" data-ui-sref="entity_profile.entity_profile_about" ng-click="mactrl.sidebarStat($event)"><i class="zmdi zmdi-hc-fw zmdi-account"></i>Mi Droguer&iacute;a</a>
             </li>
 
             <li>
