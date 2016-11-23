@@ -27,7 +27,7 @@ angular.module('app.controllers', [])
         $scope.errors={};
         entityProfileService.getProfile().then(
             function(data) {
-                $scope.entity_profile=data.entity_profile;
+                $scope.entity_profile=data;
                 if (!$scope.entity_profile.address){
                     $scope.entity_profile.address={};
                 }
@@ -36,7 +36,7 @@ angular.module('app.controllers', [])
                 asignProfileToForm();
 
 
-                $scope.letters=($scope.entity_profile.name.substr(0,1)).toUpperCase();
+                $scope.letters=($scope.entity_profile.phantasy_name.substr(0,1)).toUpperCase();
                 $scope.prof=true;
 
 
@@ -248,7 +248,10 @@ angular.module('app.controllers', [])
     $scope.errors={};
     profileService.getProfile().then(
     function(data) {
-        $scope.profile=data.profile;
+       $scope.profile=data;
+
+
+
         if (!$scope.profile.address){
         $scope.profile.address={};
         }

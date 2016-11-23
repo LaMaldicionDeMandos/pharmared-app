@@ -49,7 +49,7 @@ angular.module('app.services', [])
                         method: 'get',
                         dataType: 'json',
                     }).success(function (data) {
-                        cacheProfile = data;
+                        cacheProfile = data.profile;
                         def.resolve(cacheProfile);
                     }).error(function (data, status) {
                         def.reject(data);
@@ -88,7 +88,7 @@ angular.module('app.services', [])
                         method: 'get',
                         dataType: 'json',
                     }).success(function (data) {
-                        cacheProfile = data;
+                        cacheProfile = data.entity_profile;
                         def.resolve(cacheProfile);
                     }).error(function (data, status) {
                         def.reject(data);
