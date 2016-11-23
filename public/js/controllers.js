@@ -159,6 +159,7 @@ angular.module('app.controllers', [])
                 $scope.errors.phantasy_name = true;
                 $scope.valid = false;
             }
+
             return {err:$scope.errors,valid:$scope.valid};
         };
 
@@ -478,7 +479,7 @@ var asignProfileToForm=function() {
 
         profileService.getProfile().then(
             function(data) {
-                $scope.profile=data.profile;
+                $scope.profile=data;
                 $scope.form.email=$scope.profile.email;
 
 
