@@ -38,9 +38,11 @@
     margin-top:0%;
     padding-top:6%;
     padding-bottom:6%;
-    animation: forgot-pass forwards 0.15s;
+    animation: forgot-pass forwards 0.1s;
+    -webkit-animation:forgot-pass forwards 0.1s;
     animation-delay:0s;
     animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
     /*       cubic-bezier(.25, .1, .25, 1);*/
 }
 
@@ -48,9 +50,11 @@
     margin-top:0%;
     padding-top:0%;
     padding-bottom:0%;
-    animation: anti-forgot-pass forwards .15s;
+    animation: anti-forgot-pass forwards 0.1s;
+    -webkit-animation:anti-forgot-pass forwards 0.1s;
     animation-delay:0s;
     animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function:ease-in-out;
     /*       cubic-bezier(.25, .1, .25, 1);*/
 }
 
@@ -83,7 +87,61 @@
     }
 }
 
+@-webkit-keyframes forgot-pass {
+    0% {
+        margin-top:0%;
+        padding-top:6%;
+        padding-bottom:6%;
+
+
+    }
+    25% {
+        margin-top:2%;
+        padding-top:4%;
+        padding-bottom:4%;
+
+
+    }
+    60% {
+
+        margin-top:4%;
+        padding-top:2%;
+        padding-bottom:2%;
+
+    }
+    100% {
+        margin-top:6%;
+        padding-top:0%;
+        padding-bottom:0%;
+    }
+}
+
+
+
 @keyframes anti-forgot-pass {
+    0% {
+        margin-top:6%;
+        padding-top:0%;
+        padding-bottom:0%;
+    }
+    25% {
+        margin-top:4%;
+        padding-top:2%;
+        padding-bottom:2%;
+    }
+    60% {
+        margin-top:2%;
+        padding-top:4%;
+        padding-bottom:4%;
+    }
+    99% {
+        margin-top:0%;
+        padding-top:6%;
+        padding-bottom:6%;
+    }
+}
+
+@-webkit-keyframes anti-forgot-pass {
     0% {
         margin-top:6%;
         padding-top:0%;

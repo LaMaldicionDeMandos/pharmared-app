@@ -242,6 +242,7 @@ angular.module('app.controllers', [])
     $scope.valid=true;
     $scope.editSummary = 0;
     $scope.editInfo = 0;
+    $scope.editTrain = 0;
     $scope.editContact = 0;
     $scope.editPhrase = 0;
     $scope.form={};
@@ -285,6 +286,17 @@ angular.module('app.controllers', [])
         asignProfileToForm();
         $scope.errors={};
     };
+
+        $scope.editTra=function(){
+            $scope.editTrain=1;
+
+        };
+
+        $scope.cancEditTrain=function(){
+            $scope.editTrain=0;
+            asignProfileToForm();
+            $scope.errors={};
+        };
     $scope.editSum=function(){
         $scope.editSummary=1;
 
@@ -320,6 +332,10 @@ angular.module('app.controllers', [])
             $scope.profile.summary = $scope.form.summary;
             $scope.profile.first_name = $scope.form.first_name;
             $scope.profile.last_name = $scope.form.last_name;
+            $scope.profile.university = $scope.form.university;
+            $scope.profile.college_degree = $scope.form.college_degree;
+            $scope.profile.secondary_school = $scope.form.secondary_school;
+            $scope.profile.secondary_degree = $scope.form.secondary_degree;
             $scope.profile.phone = $scope.form.phone;
             $scope.profile.email = $scope.form.email;
             $scope.profile.twitter = $scope.form.twitter;
@@ -331,7 +347,7 @@ angular.module('app.controllers', [])
             $scope.profile.address.number = $scope.form.address.number;
             $scope.profile.address.city = $scope.form.address.city;
             $scope.profile.address.province = $scope.form.address.province;
-
+            $scope.profile.date_degree = $scope.form.date_degree;
 
             profileService.updateProfile($scope.profile).then(
                 function () {
@@ -366,7 +382,9 @@ angular.module('app.controllers', [])
            if (item === 'profilePhrase') {
                $scope.editPhrase = 0;
            }
-
+           if (item === 'profileTraining') {
+               $scope.editTrain = 0;
+           }
 
     }};
 
@@ -422,6 +440,11 @@ var asignProfileToForm=function() {
     $scope.form.address.number = $scope.profile.address.number;
     $scope.form.address.city = $scope.profile.address.city;
     $scope.form.address.province = $scope.profile.address.province;
+    $scope.form.university = $scope.profile.university;
+    $scope.form.college_degree = $scope.profile.college_degree;
+    $scope.form.secondary_school = $scope.profile.secondary_school;
+    $scope.form.secondary_degree = $scope.profile.secondary_degree;
+    $scope.form.date_degree = $scope.profile.date_degree;
 }
 
     $scope.updatePhoto = function(file) {
