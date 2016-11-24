@@ -579,11 +579,12 @@ var asignProfileToForm=function() {
             if ($scope.valid && newPass) {
                 securityService.updatePass(oldPass, newPass).then(
                     function () {
-                        console.log('update pass ok');
+                        swal({title:'Hecho!', text:'La contrase&ntilde;a se guard&oacute; con &eacute;xito', type:'success', timer:2000, showConfirmButton: true});
                     },
                     function (data,error) {
                         $scope.errors[data] = true;
-                        console.log(data);
+                        swal({title:'Atenci&oacute;n!', text:'La nueva contrase&ntilde;a no se guard&oacute;', type:'error', timer:3000,
+                            showConfirmButton: true});
                     }
                 );
             }
