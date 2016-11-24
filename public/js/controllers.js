@@ -579,11 +579,11 @@ var asignProfileToForm=function() {
             if ($scope.valid && newPass) {
                 securityService.updatePass(oldPass, newPass).then(
                     function () {
-                        swal({title:'Hecho!', text:'La contrase&ntilde;a se guard&oacute; con &eacute;xito', type:'success', timer:2000, showConfirmButton: true});
+                        swal({title:'Hecho!', text:'La contraseña se guardó; con éxito', type:'success', timer:3000, showConfirmButton: true});
                     },
                     function (data,error) {
                         $scope.errors[data] = true;
-                        swal({title:'Atenci&oacute;n!', text:'La nueva contrase&ntilde;a no se guard&oacute;', type:'error', timer:3000,
+                        swal({title:'Atención!', text:'La nueva contraseña no se guardó;', type:'error', timer:4000,
                             showConfirmButton: true});
                     }
                 );
