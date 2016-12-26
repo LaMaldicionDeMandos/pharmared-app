@@ -25,11 +25,13 @@
     <% include ./header %>
 </header>
 <section id="main">
+    <div ng-if=" mactrl.sidebarToggle.left" class="qp-ui-mask-modal qp-ui-mask-visible"></div>
     <aside id="sidebar" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }">
-        <% include ./sidebar-left %>
+      <% include ./sidebar-left %>
     </aside>
 
     <data ui-view></data>
+
 </section>
 <footer id="footer">
     <% include ./footer %>
