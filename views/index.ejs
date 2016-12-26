@@ -25,7 +25,10 @@
     <% include ./header %>
 </header>
 <section id="main">
-    <div ng-if=" mactrl.sidebarToggle.left" class="qp-ui-mask-modal qp-ui-mask-visible"></div>
+
+    <div ng-if=" mactrl.sidebarToggle.left" class="qp-ui-mask-modal qp-ui-mask-visible"
+        ng-click="mactrl.sidebarStat($event)">
+    </div>
     <aside id="sidebar" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }">
       <% include ./sidebar-left %>
     </aside>
