@@ -42,21 +42,10 @@
     -webkit-animation:forgot-pass forwards 0.1s;
     animation-delay:0s;
     animation-timing-function: ease-in-out;
-    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in-out;
     /*       cubic-bezier(.25, .1, .25, 1);*/
 }
 
-.form-animation-anti-forgot-pass {
-    margin-top:0%;
-    padding-top:0%;
-    padding-bottom:0%;
-    animation: anti-forgot-pass forwards 0.1s;
-    -webkit-animation:anti-forgot-pass forwards 0.1s;
-    animation-delay:0s;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-timing-function:ease-out;
-    /*       cubic-bezier(.25, .1, .25, 1);*/
-}
 
 @keyframes forgot-pass {
     0% {
@@ -116,9 +105,19 @@
     }
 }
 
+.form-animation-anti-forgot-pass {
+    margin-top:0%;
+    padding-top:0%;
+    padding-bottom:0%;
+    animation: anti-forgot-pass forwards 0.1s;
+    -webkit-animation:anti-forgot-pass forwards 0.1s;
+    animation-delay:0s;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function:ease-in-out;
+    /*       cubic-bezier(.25, .1, .25, 1);*/
+}
 
-
-@keyframes anti-forgot-pass {
+/*@keyframes anti-forgot-pass {
     0% {
         margin-top:6%;
         padding-top:0%;
@@ -162,7 +161,7 @@
         padding-top:6%;
         padding-bottom:6%;
     }
-}
+}*/
 
 .qp-ui-mask-modal{
     background-color:rgba(0,0,0,.5);

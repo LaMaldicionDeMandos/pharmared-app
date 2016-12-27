@@ -599,9 +599,10 @@ var asignProfileToForm=function() {
 
         $scope.resetForgotP = function() {
             $scope.passwordForm = 'anti-forgot-pass';
-            $timeout(function() {
-                $scope.form.forgotPass=false;
-            }, 150);
+          //  $timeout(function() {
+          //      $scope.form.forgotPass=false;
+          // }, 150);
+            $scope.form.forgotPass=false;
         };
 
         $scope.retrievePass=function(mailRet) {

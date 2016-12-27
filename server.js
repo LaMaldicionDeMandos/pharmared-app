@@ -116,6 +116,7 @@ app.use('/password',security);
 
 app.get('/logout', ensureAuthenticated, function(req, res) {
   console.log('Call logout');
+
   req.logout();
   req.session.destroy();
   return res.send(config.fail_authorisation_url);
