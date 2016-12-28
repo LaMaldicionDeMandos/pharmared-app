@@ -499,14 +499,19 @@ var asignProfileToForm=function() {
         $scope.form={};
         $scope.form.forgotPass=false;
         $scope.passwordForm = 'default';
+        $scope.type_visAP="password";
+        $scope.visAP="zmdi-eye-off";
+        $scope.type_visNP="password";
+        $scope.visNP="zmdi-eye-off";
+        $scope.type_visRNP="password";
+        $scope.visRNP="zmdi-eye-off";
+
+
 
         profileService.getProfile().then(
             function(data) {
                 $scope.profile=data;
                 $scope.form.email=$scope.profile.email;
-
-
-
 
             },
             function(error) {
@@ -671,6 +676,33 @@ var asignProfileToForm=function() {
             $scope.resetForgotP();
         };
 
+        $scope.visibilityAP=function() {
+       if ($scope.type_visAP=="password"){
+        $scope.visAP="zmdi-eye";
+        $scope.type_visAP="text";}
+
+        else{$scope.visAP="zmdi-eye-off";
+           $scope.type_visAP="password";
+
+       }}
+        $scope.visibilityNP=function() {
+            if ($scope.type_visNP=="password"){
+                $scope.visNP="zmdi-eye";
+                $scope.type_visNP="text";}
+
+            else{$scope.visNP="zmdi-eye-off";
+                $scope.type_visNP="password";
+
+            }}
+        $scope.visibilityRNP=function() {
+            if ($scope.type_visRNP=="password"){
+                $scope.visRNP="zmdi-eye";
+                $scope.type_visRNP="text";}
+
+            else{$scope.visRNP="zmdi-eye-off";
+                $scope.type_visRNP="password";
+
+            }}
 
 
     });

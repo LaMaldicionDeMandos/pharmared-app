@@ -179,3 +179,13 @@
     opacity:1;
     visibility:visible;
     transition-delay:0s}
+
+.inf {
+    display:inline-flex !important;
+}
+
+.black{
+    color:#000000;
+    opacity:0.54;
+    font-size:13px;
+}
