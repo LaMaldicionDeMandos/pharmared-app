@@ -7,7 +7,7 @@ angular.module('app.services', [])
             updatePass:function(oldPass,newPass){
                 var def = $q.defer();
                 $http({
-                    url: 'profile/password',
+                    url: 'security/password',
                     method: 'post',
                     dataType: 'json',
                     data:{old:oldPass,new:newPass}

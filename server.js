@@ -112,7 +112,7 @@ app.get('/partials/:view', partials.partials);
 app.use('/profile/',ensureAuthenticated);
 app.use('/profile/', profile);
 app.use('/entity/', entity_profile);
-app.use('/password',security);
+app.use('/security',security);
 
 app.get('/logout', ensureAuthenticated, function(req, res) {
   console.log('Call logout');

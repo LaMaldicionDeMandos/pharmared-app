@@ -15,10 +15,10 @@ var postPassword=function(req,res){
         if (error)  {
             res.status(400).send();
         }
-        else {
-            if (res.statusCode==400)
+        else if (response.statusCode!=201) {
+            res.status(response.statusCode).send();
+        } else {
                 res.status(201).send();
-
         }
 
     });
