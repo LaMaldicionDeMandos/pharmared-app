@@ -127,7 +127,7 @@
                     <div class="form-group {{errors.phantasy_name ? 'has-error' : ''}}">
                         <div class="fg-line">
                             <input data-ng-model="form.phantasy_name" type="text" class="form-control"
-                                   value="{{ entity_profile.phantasy_name }}" placeholder="ej. Pasut" ng-blur=validateChangePhantasyName(form.phantasy_name)>
+                                   value="{{ entity_profile.phantasy_name }}" placeholder="ej. Pasut" ng-blur=validateChangePhantasyName(form.phantasy_name) capitalize-words>
                         </div>
                         <small ng-if="errors.phantasy_name" class="help-block">El nombre de fantas&iacute;a es obligarotio</small>
                     </div>
@@ -154,16 +154,16 @@
                 <dd>
                     <div class="fg-line">
                         <input data-ng-model="form.address.street" type="text" class="form-control"
-                               value="{{ entity_profile.address.street }}" placeholder="Calle">
+                               value="{{ entity_profile.address.street }}" placeholder="Calle" capitalize-words>
 
                         <input data-ng-model="form.address.number" type="text" class="form-control"
                                value="{{ entity_profile.address.number }}" placeholder="N&uacute;mero">
 
                         <input data-ng-model="form.address.city" type="text" class="form-control"
-                               value="{{ entity_profile.address.city }}" placeholder="Localidad">
+                               value="{{ entity_profile.address.city }}" placeholder="Localidad" capitalize-words>
 
                         <input data-ng-model="form.address.province" type="text" class="form-control"
-                               value="{{ entity_profile.address.province }}" placeholder="Provincia">
+                               value="{{ entity_profile.address.province }}" placeholder="Provincia" capitalize-words>
 
                     </div>
 

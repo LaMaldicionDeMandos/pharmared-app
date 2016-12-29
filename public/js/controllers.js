@@ -394,9 +394,6 @@ angular.module('app.controllers', [])
         if (!first_name || first_name.length == 0) {
             $scope.errors.first_name = true;
            $scope.valid = false;}
-    //else {
-     //      $scope.form.first_name=first_name.substring(0,1).toUpperCase()+first_name.substring(1);
-      //      }
 
 
         return {err:$scope.errors,valid:$scope.valid};
@@ -408,9 +405,7 @@ angular.module('app.controllers', [])
             $scope.errors.last_name = true;
             $scope.valid = false;
         }
-      //  else {
-     //       $scope.form.last_name=last_name.substring(0,1).toUpperCase()+last_name.substring(1);
-      //  }
+
         return {err:$scope.errors,valid:$scope.valid};
     };
 

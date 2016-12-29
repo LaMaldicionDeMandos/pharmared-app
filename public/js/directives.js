@@ -2,7 +2,7 @@
  * Created by aida on 28/12/16.
  */
 angular.module('app.directives', [])
-    .directive('capitalizeFirst', function($parse) {
+    .directive('capitalizeWords', function($parse) {
         return {
             require: 'ngModel',
             link: function(scope, element, attrs, modelCtrl) {
