@@ -23,7 +23,7 @@ angular.module('app.services', [])
             retrievePassw: function (username) {
                 var def = $q.defer();
                 $http({
-                    url: 'password/retrieve/'+username,
+                    url: 'security/retrieve/'+username,
                     method: 'post',
                     // data: username,
                     // headers: {'Content-Type': 'application/json'}

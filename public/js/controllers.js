@@ -635,10 +635,10 @@ var asignProfileToForm=function() {
                         type: "success",
                         showCancelButton: true,
                         confirmButtonText: "Ir a Cambiar Contraseña",
-                        confirmButtonClass: "btn-success",
+                        confirmButtonClass: "btn btn-link btn-green",
                         cancelButtonText: "Ir al Muro",
-                        cancelButtonClass:"btn-success",
-                        //"btn btn-link btn-green",
+                        cancelButtonClass:"btn btn-link btn-green",
+                        //"btn-success",
                         closeOnConfirm:true,
                         closeOnCancel: true
                     }, function(isConfirm){
