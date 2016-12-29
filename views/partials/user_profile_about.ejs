@@ -129,7 +129,7 @@
                     <div class="form-group {{errors.first_name ? 'has-error' : ''}}">
                         <div class="fg-line">
                             <input data-ng-model="form.first_name" type="text" class="form-control"
-                                   value="{{ profile.first_name }}" placeholder="ej. Aida" ng-blur=validateChangeFirstName(form.first_name)>
+                                   value="{{ profile.first_name }}" placeholder="ej. Aida" ng-blur=validateChangeFirstName(form.first_name) capitalize-first>
                         </div>
                         <small ng-if="errors.first_name" class="help-block">El nombre es obligarotio</small>
                     </div>
@@ -142,7 +142,7 @@
                     <div class="form-group {{errors.last_name ? 'has-error' : ''}}">
                     <div class="fg-line">
                         <input data-ng-model="form.last_name" type="text" class="form-control"
-                               value="{{ profile.last_name }}" placeholder="ej. Pasut" ng-blur=validateChangeLastName(form.last_name)>
+                               value="{{ profile.last_name }}" placeholder="ej. Pasut" ng-blur=validateChangeLastName(form.last_name) capitalize-first>
                     </div>
                         <small ng-if="errors.last_name" class="help-block">El apellido es obligarotio</small>
                     </div>
@@ -191,16 +191,16 @@
                 <dd>
                        <div class="fg-line">
                            <input data-ng-model="form.address.street" type="text" class="form-control"
-                                  value="{{ profile.address.street }}" placeholder="Calle">
+                                  value="{{ profile.address.street }}" placeholder="Calle" ng-blur=change("street",form.address.street)>
 
                            <input data-ng-model="form.address.number" type="text" class="form-control"
-                                   value="{{ profile.address.number }}" placeholder="N&uacute;mero">
+                                   value="{{ profile.address.number }}" placeholder="N&uacute;mero" >
 
                            <input data-ng-model="form.address.city" type="text" class="form-control"
-                                  value="{{ profile.address.city }}" placeholder="Localidad">
+                                  value="{{ profile.address.city }}" placeholder="Localidad" ng-blur=change("city",form.address.city)>
 
                            <input data-ng-model="form.address.province" type="text" class="form-control"
-                                  value="{{ profile.address.province }}" placeholder="Provincia">
+                                  value="{{ profile.address.province }}" placeholder="Provincia" ng-blur=change("province",form.address.province)>
 
                        </div>
 

@@ -13,6 +13,7 @@ var app = angular.module('app', [
     'ngTable',
     'app.controllers',
     'app.services',
-    'ngAvatar'
+    'ngAvatar',
+    'app.directives'
 
 ]);
